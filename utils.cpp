@@ -41,21 +41,22 @@ int evalBoard(vector<vector<int>> &board){
 
 vector<vector<int>> customPosition(){
     vector<vector<int>> board;
-    vector<int> row ={-50,-30,-31,-90,-1000,-31,0,-50};
+    vector<int> row;
+    row ={-50,      0,      0,      0,      0,  -1000,    0,      -50};
     board.pb(row);
-    row ={-10,-10,-10,-10,0,-10,-10,-10};
+    row ={0,      -31,    0,    0,    -90,      0,    -10,    0};
     board.pb(row);
-    row ={0,0,0,0,0,-30,0,0};
+    row ={-10,      0  ,      -30,      0,      0,      0,    0,      -10};
     board.pb(row);
-    row ={0,0,0,0,-10,0,0,0};
+    row ={0,        -10,      0,      0,      0,    0,      30,      90};
     board.pb(row);
-    row ={90,0,0,0,0,0,0,0};
+    row ={0,       0,      0,      0,      0,      31,      0,      0};
     board.pb(row);
-    row ={0,0,10,0,0,0,0,0};
+    row ={0,        0,      0,     0,      -10,      0,      10,      0};
     board.pb(row);
-    row ={10,10,0,10,10,10,10,10};
+    row ={10,       10,     10,      0,     0,     -31,     0,     10};
     board.pb(row);
-    row ={50,30,31,0,1000,31,30,50};
+    row ={0,       0,     1000,      50,   0,       50,     0,     0};
     board.pb(row);
     return board;   
 }

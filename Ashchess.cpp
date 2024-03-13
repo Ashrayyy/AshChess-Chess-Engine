@@ -112,6 +112,15 @@ void debugBoard(){
     }
     cout<<evalBoard(board);
     cout<<endl;
+    
+    int turn =1;
+    int startTime = clock();
+    auto result = minimax(board,5,turn,-10000,10000);
+    
+    printInfo(result, startTime);
+    board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
+    board[result[0].first][result[0].second]=0;
+    printBoard(board);
 }
 
 void solve(){
@@ -147,6 +156,7 @@ void solve(){
 }
 
 int main(){
-    solve();
+    // solve();
+    debugBoard();
     return 0;
 }
