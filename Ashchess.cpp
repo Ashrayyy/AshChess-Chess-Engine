@@ -114,14 +114,33 @@ void debugBoard(){
 void solve(){
     auto  board = initialPosition();
     printBoard(board);
+    int turn = 1;
+    while(true){
+        int k;
+        cin>>k;
+        if(k==0){
+            int startTime = clock();
+            auto result = minimax(board,4,turn);
+            // cout<<result.size()<<endl;
+            // cout<<"{"<<result[0].first<<","<<result[0].second<<"}"<<" -> "<<"{"<<result[1].first<<","<<result[1].second<<"}"<<endl;
+            // cout<<result[2].first<<endl;
+            // cout<<"Runtime: "<<clock()-startTime<<endl;
+            printInfo(result, startTime);
 
-    int startTime = clock();
-    auto result = minimax(board,5,1);
-    cout<<result.size()<<endl;
-    cout<<"{"<<result[0].first<<","<<result[0].second<<"}"<<" -> "<<"{"<<result[1].first<<","<<result[1].second<<"}"<<endl;
-    cout<<result[2].first<<endl;
-
-    cout<<"Runtime: "<<clock()-startTime<<endl;
+            board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
+            board[result[0].first][result[0].second]=0;
+            printBoard(board);
+        }
+        else{
+            int l1,r1,l2,r2;
+            cin>>l1>>r1>>l2>>r2;
+            board[l2][r2]=board[l1][r1];
+            board[l1][r1]=0;
+            printBoard(board);
+        }
+        turn *= -1;
+    }
+    
 }
 
 int main(){
