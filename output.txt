@@ -9,19 +9,203 @@
 	6 P P P P P P P P 
 	7 R N B Q K B N R 
 
-Depth 6 Calculated
-{6,0} -> {5,0}
--10
-Runtime: 10450
-
 
 	  0 1 2 3 4 5 6 7 
 	0 r n b q k b n r 
 	1 p p p p p p p p 
 	2 . . . . . . . . 
 	3 . . . . . . . . 
-	4 . . . . . . . . 
-	5 P . . . . . . . 
-	6 . P P P P P P P 
+	4 . . . . P . . . 
+	5 . . . . . . . . 
+	6 P P P P . P P P 
 	7 R N B Q K B N R 
+
+{1,3} -> {3,3}
+d7d5
+10
+Runtime: 6667
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b q k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . p . . . . 
+	4 . . . . P . . . 
+	5 . . . . . . . . 
+	6 P P P P . P P P 
+	7 R N B Q K B N R 
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b q k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . P . . . . 
+	4 . . . . . . . . 
+	5 . . . . . . . . 
+	6 P P P P . P P P 
+	7 R N B Q K B N R 
+
+{0,3} -> {3,3}
+d8d5
+0
+Runtime: 60910
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . q . . . . 
+	4 . . . . . . . . 
+	5 . . . . . . . . 
+	6 P P P P . P P P 
+	7 R N B Q K B N R 
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . q . . . . 
+	4 . . . . . . . . 
+	5 . . N . . . . . 
+	6 P P P P . P P P 
+	7 R . B Q K B N R 
+
+{3,3} -> {3,4}
+d5e5
+0
+Runtime: 21071
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . q . . . 
+	4 . . . . . . . . 
+	5 . . N . . . . . 
+	6 P P P P . P P P 
+	7 R . B Q K B N R 
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . q . . . 
+	4 . . . . . . . . 
+	5 . . N . . . . . 
+	6 P P P P B P P P 
+	7 R . B Q K . N R 
+
+{0,2} -> {4,6}
+c8g4
+1
+Runtime: 30081
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . q . . . 
+	4 . . . . . . b . 
+	5 . . N . . . . . 
+	6 P P P P B P P P 
+	7 R . B Q K . N R 
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . q . . . 
+	4 . . . P . . b . 
+	5 . . N . . . . . 
+	6 P P P . B P P P 
+	7 R . B Q K . N R 
+
+{4,6} -> {6,4}
+g4e2
+10
+Runtime: 4429
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . q . . . 
+	4 . . . P . . . . 
+	5 . . N . . . . . 
+	6 P P P . b P P P 
+	7 R . B Q K . N R 
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . q . . . 
+	4 . . . P . . . . 
+	5 . . N . . . . . 
+	6 P P P . N P P P 
+	7 R . B Q K . . R 
+
+{3,4} -> {3,7}
+e5h5
+10
+Runtime: 23411
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . . . . q 
+	4 . . . P . . . . 
+	5 . . N . . . . . 
+	6 P P P . N P P P 
+	7 R . B Q K . . R 
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . . . . q 
+	4 . . . P . . . . 
+	5 . . N . . . . . 
+	6 P P P . N P P P 
+	7 R . B Q . . K R 
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . . . . q 
+	4 . . . P . . . . 
+	5 . . N . . . . . 
+	6 P P P . N P P P 
+	7 R . B Q . R K . 
+
+{6,7} -> {5,7}
+h2h3
+-10
+Runtime: 13353
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b n r 
+	1 p p p . p p p p 
+	2 . . . . . . . . 
+	3 . . . . . . . q 
+	4 . . . P . . . . 
+	5 . . N . . . . P 
+	6 P P P . N P P . 
+	7 R . B Q . R K . 
 

@@ -167,6 +167,13 @@ void debugBoard(){
     printBoard(board);
 }
 
+void assignNums(string move, int &l1, int &r1, int &l2, int &r2){
+    r1=move[0]-'a';
+    l1='8'-move[1];
+    r2=move[2]-'a';
+    l2='8'-move[3];
+}
+
 void solve(){
     auto  board = initialPosition();
     printBoard(board);
@@ -177,19 +184,19 @@ void solve(){
         if(k==0){
             int startTime = clock();
 
-            promise<vector<pair<int,int>>> pr1;
-            future <vector<pair<int,int>>> ftr1 = pr1.get_future();
-            auto nBoard=board;
-            thread t1(&findValue, ref(pr1), ref(nBoard), 6, turn);
+            // promise<vector<pair<int,int>>> pr1;
+            // future <vector<pair<int,int>>> ftr1 = pr1.get_future();
+            // auto nBoard=board;
+            // thread t1(&findValue, ref(pr1), ref(nBoard), 6, turn);
             
-            auto result = minimax(board,5,turn,-10000,10000);
+            auto result = minimax(board,6,turn,-10000,10000);
 
-            this_thread :: sleep_for(chrono::seconds(10));
-            if(ftr1.wait_for(chrono :: seconds (0))==future_status::ready){
-                result =ftr1.get();
-                cout<<"Depth 6 Calculated"<<endl;
-            } 
-            if(t1.joinable())t1.detach();
+            // this_thread :: sleep_for(chrono::seconds(10));
+            // if(ftr1.wait_for(chrono :: seconds (0))==future_status::ready){
+            //     result =ftr1.get();
+            //     cout<<"Depth 6 Calculated"<<endl;
+            // } 
+            // if(t1.joinable())t1.detach();
 
             printInfo(result, startTime);
             board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
@@ -198,7 +205,9 @@ void solve(){
         }
         else{
             int l1,r1,l2,r2;
-            cin>>l1>>r1>>l2>>r2;
+            string moveMade;
+            cin>>moveMade;
+            assignNums(moveMade,l1,r1,l2,r2);
             board[l2][r2]=board[l1][r1];
             board[l1][r1]=0;
             printBoard(board);

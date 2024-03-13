@@ -108,6 +108,11 @@ void printBoard(vector<vector<int>> &board){
 
 void printInfo(vector<pair<int,int>> &result, int startTime){
     cout<<"{"<<result[0].first<<","<<result[0].second<<"}"<<" -> "<<"{"<<result[1].first<<","<<result[1].second<<"}"<<endl;
+    char r1=result[0].second+'a';
+    int l1=8-result[0].first;
+    char r2=result[1].second+'a';
+    int l2=8-result[1].first;
+    cout<<r1<<l1<<r2<<l2<<endl;
     cout<<result[2].first<<endl;
     cout<<"Runtime: "<<clock()-startTime<<endl<<endl;;
 }
