@@ -42,15 +42,15 @@ int evalBoard(vector<vector<int>> &board){
 vector<vector<int>> customPosition(){
     vector<vector<int>> board;
     vector<int> row;
-    row ={-50,      0,      0,      0,      0,  -1000,    0,      -50};
+    row ={-50,      0,      0,      0,      -1000,  0,    0,      -50};
     board.pb(row);
     row ={0,      -31,    0,    0,    -90,      0,    -10,    0};
     board.pb(row);
     row ={-10,      0  ,      -30,      0,      0,      0,    0,      -10};
     board.pb(row);
-    row ={0,        -10,      0,      0,      0,    0,      30,      90};
+    row ={0,        -10,      0,      0,      0,    0,      30,      0};
     board.pb(row);
-    row ={0,       0,      0,      0,      0,      31,      0,      0};
+    row ={0,       0,      0,      0,      0,      31,      0,      90};
     board.pb(row);
     row ={0,        0,      0,     0,      -10,      0,      10,      0};
     board.pb(row);
@@ -94,8 +94,12 @@ void printBoard(vector<vector<int>> &board){
     }
     if(peice.size()==0)utilsInit();
     cout<<endl;
+    cout<<"\t  ";
+    for(int i=0;i<8;i++)cout<<i<<" ";
+    cout<<endl;
+    int ct=0;
     for(auto row : board){
-        cout<<"\t";
+        cout<<"\t"<<ct++<<" ";
         for(auto col:row)cout<<peice[col]<<" ";
         cout<<endl;
     }
@@ -105,5 +109,5 @@ void printBoard(vector<vector<int>> &board){
 void printInfo(vector<pair<int,int>> &result, int startTime){
     cout<<"{"<<result[0].first<<","<<result[0].second<<"}"<<" -> "<<"{"<<result[1].first<<","<<result[1].second<<"}"<<endl;
     cout<<result[2].first<<endl;
-    cout<<"Runtime: "<<clock()-startTime<<endl;
+    cout<<"Runtime: "<<clock()-startTime<<endl<<endl;;
 }
