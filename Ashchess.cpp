@@ -115,8 +115,7 @@ void debugBoard(){
     int startTime = clock();
     vector<pair<int,int>> result;
 
-    promise<vector<pair<int,int>>> pr1,pr2,pr3,pr4,pr5,pr6,pr7,pr8,pr9,pr10;
-    future <vector<pair<int,int>>> ftr1 = pr1.get_future();
+    promise<vector<pair<int,int>>> pr2,pr3,pr4,pr5,pr6,pr7,pr8,pr9,pr10;
     future <vector<pair<int,int>>> ftr2 = pr2.get_future();
     future <vector<pair<int,int>>> ftr3 = pr3.get_future();
     future <vector<pair<int,int>>> ftr4 = pr4.get_future();
@@ -126,40 +125,53 @@ void debugBoard(){
     future <vector<pair<int,int>>> ftr8 = pr8.get_future();
     future <vector<pair<int,int>>> ftr9 = pr9.get_future();
     future <vector<pair<int,int>>> ftr10 = pr10.get_future();
-    
-    thread t1(&findValue, ref(pr1), ref(board), 6, turn);
-    // thread t2(&findValue, ref(pr2), ref(board), 2, turn);
-    // thread t3(&findValue, ref(pr3), ref(board), 3, turn);
-    // thread t4(&findValue, ref(pr4), ref(board), 4, turn);
-    // thread t5(&findValue, ref(pr5), ref(board), 5, turn);
-    // thread t6(&findValue, ref(pr6), ref(board), 6, turn);
-    // thread t7(&findValue, ref(pr7), ref(board), 7, turn);
-    // thread t8(&findValue, ref(pr8), ref(board), 8, turn);
-    // thread t9(&findValue, ref(pr9), ref(board), 9, turn);
-    // thread t10(&findValue, ref(pr10), ref(board), 10, turn);
-    
-    t1.join();
-    result = ftr1.get();
-    // if(ftr2.wait_for(chrono::seconds(0))==future_status::ready) result = ftr2.get();
-    // t2.detach();
-    // if(ftr3.wait_for(chrono::seconds(10))==future_status::ready) result = ftr3.get();
-    // t3.detach();
-    // if(ftr4.wait_for(chrono::seconds(12))==future_status::ready) result = ftr4.get();
-    // t4.detach();
-    // if(ftr5.wait_for(chrono::seconds(10))==future_status::ready) result = ftr5.get();
-    // t5.detach();
-    // if(ftr6.wait_for(chrono::seconds(10))==future_status::ready) result = ftr6.get();
-    // t6.detach();
-    // if(ftr7.wait_for(chrono::seconds(10))==future_status::ready) result = ftr7.get();
-    // t7.detach();
-    // if(ftr8.wait_for(chrono::seconds(10))==future_status::ready) result = ftr8.get();
-    // t8.detach();
-    // if(ftr9.wait_for(chrono::seconds(10))==future_status::ready) result = ftr9.get();
-    // t9.detach();
-    // if(ftr10.wait_for(chrono::seconds(10))==future_status::ready) result = ftr10.get();
-    // t10.detach();
 
-    cout<<endl<<"Result at the end is "<<"\n";
+    auto nBoard2 = board;
+    thread t2(&findValue, ref(pr2), ref(nBoard2), 2, turn);
+    auto nBoard3 = board;
+    thread t3(&findValue, ref(pr3), ref(nBoard3), 3, turn);
+    auto nBoard4 = board;
+    thread t4(&findValue, ref(pr4), ref(nBoard4), 4, turn);
+    auto nBoard5 = board;
+    thread t5(&findValue, ref(pr5), ref(nBoard5), 5, turn);
+    auto nBoard6 = board;
+    thread t6(&findValue, ref(pr6), ref(nBoard6), 6, turn);
+    auto nBoard7 = board;
+    thread t7(&findValue, ref(pr7), ref(nBoard7), 7, turn);
+    auto nBoard8 = board;
+    thread t8(&findValue, ref(pr8), ref(nBoard8), 8, turn);
+    auto nBoard9 = board;
+    thread t9(&findValue, ref(pr9), ref(nBoard9), 9, turn);
+    auto nBoard10 = board;
+    thread t10(&findValue, ref(pr10), ref(nBoard10), 10, turn);
+    
+    auto nBoard = board;
+    result = minimax(nBoard,1,turn,-10000,10000);
+    
+    this_thread :: sleep_for(chrono :: seconds(15));
+    
+    int finalDepth = 1;
+
+    if(ftr2.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr2.get(),finalDepth = 2;
+    if(ftr3.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr3.get(),finalDepth = 3;
+    if(ftr4.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr4.get(),finalDepth = 4;
+    if(ftr5.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr5.get(),finalDepth = 5;
+    if(ftr6.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr6.get(),finalDepth = 6;
+    if(ftr7.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr7.get(),finalDepth = 7;
+    if(ftr8.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr8.get(),finalDepth = 8;
+    if(ftr9.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr9.get(),finalDepth = 9;
+    if(ftr10.wait_for(chrono::seconds(0))== future_status::ready) result = ftr10.get(),finalDepth = 10;
+    t2.detach();
+    t3.detach();
+    t4.detach();
+    t5.detach();
+    t6.detach();
+    t7.detach();
+    t8.detach();
+    t9.detach();
+    t10.detach();
+
+    cout<<endl<<"Result calculated up till "<<finalDepth<<" depth, and is\n";
     printInfo(result, startTime);
 
     board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
@@ -218,7 +230,7 @@ void solve(){
 }
 
 int main(){
-    solve();
-    // debugBoard();
+    // solve();
+    debugBoard();
     return 0;
 }
