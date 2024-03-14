@@ -195,25 +195,16 @@ void solve(){
         cin>>k;
         if(k==0){
             int startTime = clock();
-
-            // promise<vector<pair<int,int>>> pr1;
-            // future <vector<pair<int,int>>> ftr1 = pr1.get_future();
-            // auto nBoard=board;
-            // thread t1(&findValue, ref(pr1), ref(nBoard), 6, turn);
             
             auto result = minimax(board,6,turn,-10000,10000);
-
-            // this_thread :: sleep_for(chrono::seconds(10));
-            // if(ftr1.wait_for(chrono :: seconds (0))==future_status::ready){
-            //     result =ftr1.get();
-            //     cout<<"Depth 6 Calculated"<<endl;
-            // } 
-            // if(t1.joinable())t1.detach();
 
             printInfo(result, startTime);
             board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
             board[result[0].first][result[0].second]=0;
             printBoard(board);
+        }
+        else if(k==2){
+            // skip turn 
         }
         else{
             int l1,r1,l2,r2;
@@ -230,7 +221,7 @@ void solve(){
 }
 
 int main(){
-    // solve();
-    debugBoard();
+    solve();
+    // debugBoard();
     return 0;
 }
