@@ -1,0 +1,12 @@
+The game was played online against a random player, engine lost on time but Chess.com evaluated the accuracy 
+to be very close to 90% (88.2%). The end position was evaluated as mate in 12.
+
+Here is the game PGN
+
+1. e4 d5 2. exd5 Qxd5 3. Nc3 Qe5+ 4. Be2 Bg4 5. f3 Bd7 6. d4 Qf6 7. Nd5 Qc6 8.
+c4 e6 9. Nb4 Bxb4+ 10. Bd2 Bxd2+ 11. Qxd2 h6 12. d5 exd5 13. cxd5 Qg6 14. g4 h5
+15. Bd3 Qb6 16. Qe2+ Kd8 17. O-O-O hxg4 18. fxg4 Nh6 19. h3 Nxg4 20. hxg4 Rxh1
+21. Be4 Rxg1 22. d6 Rxd1+ 23. Qxd1 cxd6 24. Qh1 Qe3+ 25. Kb1 Bc8 26. Qh8+ Kc7
+27. Qe8 Nd7 28. Qe7 d5 29. Qxf7 Qxe4+ 30. Kc1 g5 31. Qg7 b5 32. Qxg5 Qc4+ 33.
+Kd2 Qd4+ 34. Kc1 Bb7 35. b3 Qf6 36. Qe3 Qa1+ 37. Kc2 Qxa2+ 38. Kc1 Qa1+ 39. Kc2
+Qe5 40. Qc1 Qe4+ 41. Kb2+ Bc6 42. g5 Kb7 43. Ka3 b4+ 44. Ka2 1-0
