@@ -1,3 +1,4 @@
+This game was played by the bot on both sides (depth 6)
 
 	r n b q k b n r 
 	p p p p p p p p 
