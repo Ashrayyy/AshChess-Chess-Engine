@@ -189,6 +189,7 @@ void assignNums(string move, int &l1, int &r1, int &l2, int &r2){
 void solve(){
     auto  board = initialPosition();
     printBoard(board);
+    int depth = 6;
     int turn = 1;
     while(true){
         int k;
@@ -196,7 +197,7 @@ void solve(){
         if(k==0){
             int startTime = clock();
             
-            auto result = minimax(board,6,turn,-10000,10000);
+            auto result = minimax(board,depth,turn,-10000,10000);
 
             printInfo(result, startTime);
             board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
