@@ -180,5 +180,15 @@ vector<vector<pair<int,int>>> allPosibleMoves(int color, vector<vector<int>> boa
             }
         }
     }
+
+    // or instead, i will try {checks} then {peice takes bigger peice} then {blank moves} and at last {sacrifices}
+    sort(moves.begin(),moves.end(),[&board](vector<pair<int,int>> &a, vector<pair<int,int>> &b){
+        auto pPosa=a[0],nPosa=a[1];
+        auto pPosb=b[0],nPosb=b[1];
+        int diff1 = (abs(board[nPosa.first][nPosa.second])==0 ? 0 : (abs(board[nPosa.first][nPosa.second])-abs(board[pPosa.first][pPosa.second])));
+        int diff2 = (abs(board[nPosb.first][nPosb.second])==0 ? 0 : (abs(board[nPosb.first][nPosb.second])-abs(board[pPosb.first][pPosb.second])));
+        // return diff1>diff2;
+        return (abs(board[nPosa.first][nPosa.second])-abs(board[pPosa.first][pPosa.second]))>(abs(board[nPosb.first][nPosb.second])-abs(board[pPosb.first][pPosb.second]));
+    });
     return moves;
 }

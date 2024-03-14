@@ -41,21 +41,22 @@ int evalBoard(vector<vector<int>> &board){
 
 vector<vector<int>> customPosition(){
     vector<vector<int>> board;
-    vector<int> row ={-50,-30,-31,-90,-1000,-31,0,-50};
+    vector<int> row;
+    row ={-50,      0,      0,      0,      -1000,  0,    0,      -50};
     board.pb(row);
-    row ={-10,-10,-10,-10,0,-10,-10,-10};
+    row ={0,      -31,    0,    0,    -90,      0,    -10,    0};
     board.pb(row);
-    row ={0,0,0,0,0,-30,0,0};
+    row ={-10,      0  ,      -30,      0,      0,      0,    0,      -10};
     board.pb(row);
-    row ={0,0,0,0,-10,0,0,0};
+    row ={0,        -10,      0,      0,      0,    0,      30,      0};
     board.pb(row);
-    row ={90,0,0,0,0,0,0,0};
+    row ={0,       0,      0,      0,      0,      31,      0,      90};
     board.pb(row);
-    row ={0,0,10,0,0,0,0,0};
+    row ={0,        0,      0,     0,      -10,      0,      10,      0};
     board.pb(row);
-    row ={10,10,0,10,10,10,10,10};
+    row ={10,       10,     10,      0,     0,     -31,     0,     10};
     board.pb(row);
-    row ={50,30,31,0,1000,31,30,50};
+    row ={0,       0,     1000,      50,   0,       50,     0,     0};
     board.pb(row);
     return board;   
 }
@@ -93,10 +94,25 @@ void printBoard(vector<vector<int>> &board){
     }
     if(peice.size()==0)utilsInit();
     cout<<endl;
+    cout<<"\t  ";
+    for(int i=0;i<8;i++)cout<<i<<" ";
+    cout<<endl;
+    int ct=0;
     for(auto row : board){
-        cout<<"\t";
+        cout<<"\t"<<ct++<<" ";
         for(auto col:row)cout<<peice[col]<<" ";
         cout<<endl;
     }
     cout<<endl;
+}
+
+void printInfo(vector<pair<int,int>> &result, int startTime){
+    cout<<"{"<<result[0].first<<","<<result[0].second<<"}"<<" -> "<<"{"<<result[1].first<<","<<result[1].second<<"}"<<endl;
+    char r1=result[0].second+'a';
+    int l1=8-result[0].first;
+    char r2=result[1].second+'a';
+    int l2=8-result[1].first;
+    cout<<r1<<l1<<r2<<l2<<endl;
+    cout<<result[2].first<<endl;
+    cout<<"Runtime: "<<clock()-startTime<<endl<<endl;;
 }

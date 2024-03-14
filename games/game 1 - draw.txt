@@ -1,0 +1,647 @@
+
+	r n b q k b n r 
+	p p p p p p p p 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	P P P P P P P P 
+	R N B Q K B N R 
+
+{6,0} -> {4,0}
+0
+Runtime: 1682
+
+	r n b q k b n r 
+	p p p p p p p p 
+	. . . . . . . . 
+	. . . . . . . . 
+	P . . . . . . . 
+	. . . . . . . . 
+	. P P P P P P P 
+	R N B Q K B N R 
+
+{0,1} -> {2,0}
+0
+Runtime: 1879
+
+	r . b q k b n r 
+	p p p p p p p p 
+	n . . . . . . . 
+	. . . . . . . . 
+	P . . . . . . . 
+	. . . . . . . . 
+	. P P P P P P P 
+	R N B Q K B N R 
+
+{6,2} -> {4,2}
+0
+Runtime: 1924
+
+	r . b q k b n r 
+	p p p p p p p p 
+	n . . . . . . . 
+	. . . . . . . . 
+	P . P . . . . . 
+	. . . . . . . . 
+	. P . P P P P P 
+	R N B Q K B N R 
+
+{1,3} -> {3,3}
+0
+Runtime: 2426
+
+	r . b q k b n r 
+	p p p . p p p p 
+	n . . . . . . . 
+	. . . p . . . . 
+	P . P . . . . . 
+	. . . . . . . . 
+	. P . P P P P P 
+	R N B Q K B N R 
+
+{4,2} -> {3,2}
+-10
+Runtime: 4401
+
+	r . b q k b n r 
+	p p p . p p p p 
+	n . . . . . . . 
+	. . P p . . . . 
+	P . . . . . . . 
+	. . . . . . . . 
+	. P . P P P P P 
+	R N B Q K B N R 
+
+{0,0} -> {0,1}
+0
+Runtime: 3751
+
+	. r b q k b n r 
+	p p p . p p p p 
+	n . . . . . . . 
+	. . P p . . . . 
+	P . . . . . . . 
+	. . . . . . . . 
+	. P . P P P P P 
+	R N B Q K B N R 
+
+{4,0} -> {3,0}
+-10
+Runtime: 3293
+
+	. r b q k b n r 
+	p p p . p p p p 
+	n . . . . . . . 
+	P . P p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. P . P P P P P 
+	R N B Q K B N R 
+
+{0,2} -> {1,3}
+0
+Runtime: 3561
+
+	. r . q k b n r 
+	p p p b p p p p 
+	n . . . . . . . 
+	P . P p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. P . P P P P P 
+	R N B Q K B N R 
+
+{6,1} -> {4,1}
+-10
+Runtime: 4172
+
+	. r . q k b n r 
+	p p p b p p p p 
+	n . . . . . . . 
+	P . P p . . . . 
+	. P . . . . . . 
+	. . . . . . . . 
+	. . . P P P P P 
+	R N B Q K B N R 
+
+{2,0} -> {4,1}
+0
+Runtime: 4154
+
+	. r . q k b n r 
+	p p p b p p p p 
+	. . . . . . . . 
+	P . P p . . . . 
+	. n . . . . . . 
+	. . . . . . . . 
+	. . . P P P P P 
+	R N B Q K B N R 
+
+{7,3} -> {5,1}
+-10
+Runtime: 5673
+
+	. r . q k b n r 
+	p p p b p p p p 
+	. . . . . . . . 
+	P . P p . . . . 
+	. n . . . . . . 
+	. Q . . . . . . 
+	. . . P P P P P 
+	R N B . K B N R 
+
+{4,1} -> {6,2}
+20
+Runtime: 10625
+
+	. r . q k b n r 
+	p p p b p p p p 
+	. . . . . . . . 
+	P . P p . . . . 
+	. . . . . . . . 
+	. Q . . . . . . 
+	. . n P P P P P 
+	R N B . K B N R 
+
+{5,1} -> {6,2}
+10
+Runtime: 11747
+
+	. r . q k b n r 
+	p p p b p p p p 
+	. . . . . . . . 
+	P . P p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{0,1} -> {0,0}
+30
+Runtime: 6893
+
+	r . . q k b n r 
+	p p p b p p p p 
+	. . . . . . . . 
+	P . P p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{3,0} -> {2,0}
+20
+Runtime: 7550
+
+	r . . q k b n r 
+	p p p b p p p p 
+	P . . . . . . . 
+	. . P p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{0,0} -> {0,1}
+30
+Runtime: 7703
+
+	. r . q k b n r 
+	p p p b p p p p 
+	P . . . . . . . 
+	. . P p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{2,0} -> {1,1}
+20
+Runtime: 7610
+
+	. r . q k b n r 
+	p P p b p p p p 
+	. . . . . . . . 
+	. . P p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{0,1} -> {1,1}
+40
+Runtime: 7784
+
+	. . . q k b n r 
+	p r p b p p p p 
+	. . . . . . . . 
+	. . P p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{3,2} -> {2,2}
+11
+Runtime: 11756
+
+	. . . q k b n r 
+	p r p b p p p p 
+	. . P . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{1,1} -> {2,1}
+51
+Runtime: 10838
+
+	. . . q k b n r 
+	p . p b p p p p 
+	. r P . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{2,2} -> {1,3}
+41
+Runtime: 11774
+
+	. . . q k b n r 
+	p . p P p p p p 
+	. r . . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{0,3} -> {1,3}
+61
+Runtime: 14136
+
+	. . . . k b n r 
+	p . p q p p p p 
+	. r . . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	R N B . K B N R 
+
+{7,0} -> {1,0}
+21
+Runtime: 18081
+
+	. . . . k b n r 
+	R . p q p p p p 
+	. r . . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	. N B . K B N R 
+
+{1,3} -> {2,2}
+61
+Runtime: 19194
+
+	. . . . k b n r 
+	R . p . p p p p 
+	. r q . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . Q P P P P P 
+	. N B . K B N R 
+
+{6,2} -> {2,2}
+51
+Runtime: 18178
+
+	. . . . k b n r 
+	R . p . p p p p 
+	. r Q . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . . P P P P P 
+	. N B . K B N R 
+
+{2,1} -> {2,2}
+82
+Runtime: 8038
+
+	. . . . k b n r 
+	R . p . p p p p 
+	. . r . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . . P P P P P 
+	. N B . K B N R 
+
+{1,0} -> {0,0}
+51
+Runtime: 3774
+
+	R . . . k b n r 
+	. . p . p p p p 
+	. . r . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . . P P P P P 
+	. N B . K B N R 
+
+{0,4} -> {1,3}
+82
+Runtime: 4069
+
+	R . . . . b n r 
+	. . p k p p p p 
+	. . r . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. . . P P P P P 
+	. N B . K B N R 
+
+{7,2} -> {6,1}
+51
+Runtime: 5698
+
+	R . . . . b n r 
+	. . p k p p p p 
+	. . r . . . . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. B . P P P P P 
+	. N . . K B N R 
+
+{0,6} -> {2,5}
+81
+Runtime: 7221
+
+	R . . . . b . r 
+	. . p k p p p p 
+	. . r . . n . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. B . P P P P P 
+	. N . . K B N R 
+
+{0,0} -> {3,0}
+50
+Runtime: 7220
+
+	. . . . . b . r 
+	. . p k p p p p 
+	. . r . . n . . 
+	R . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. B . P P P P P 
+	. N . . K B N R 
+
+{2,2} -> {6,2}
+61
+Runtime: 6584
+
+	. . . . . b . r 
+	. . p k p p p p 
+	. . . . . n . . 
+	R . . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. B r P P P P P 
+	. N . . K B N R 
+
+{3,0} -> {3,1}
+31
+Runtime: 6916
+
+	. . . . . b . r 
+	. . p k p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. B r P P P P P 
+	. N . . K B N R 
+
+{0,7} -> {0,6}
+70
+Runtime: 6146
+
+	. . . . . b r . 
+	. . p k p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	. . . . . . . . 
+	. B r P P P P P 
+	. N . . K B N R 
+
+{7,1} -> {5,0}
+51
+Runtime: 6006
+
+	. . . . . b r . 
+	. . p k p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. B r P P P P P 
+	. . . . K B N R 
+
+{6,2} -> {6,1}
+70
+Runtime: 6023
+
+	. . . . . b r . 
+	. . p k p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. r . P P P P P 
+	. . . . K B N R 
+
+{3,1} -> {6,1}
+60
+Runtime: 4642
+
+	. . . . . b r . 
+	. . p k p p p p 
+	. . . . . n . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. R . P P P P P 
+	. . . . K B N R 
+
+{1,3} -> {0,2}
+80
+Runtime: 2718
+
+	. . k . . b r . 
+	. . p . p p p p 
+	. . . . . n . . 
+	. . . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. R . P P P P P 
+	. . . . K B N R 
+
+{6,1} -> {3,1}
+70
+Runtime: 2666
+
+	. . k . . b r . 
+	. . p . p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{0,6} -> {0,7}
+80
+Runtime: 2555
+
+	. . k . . b . r 
+	. . p . p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{3,1} -> {3,0}
+70
+Runtime: 2815
+
+	. . k . . b . r 
+	. . p . p p p p 
+	. . . . . n . . 
+	R . . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{0,2} -> {1,1}
+80
+Runtime: 2451
+
+	. . . . . b . r 
+	. k p . p p p p 
+	. . . . . n . . 
+	R . . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{3,0} -> {3,1}
+70
+Runtime: 3061
+
+	. . . . . b . r 
+	. k p . p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{1,1} -> {0,2}
+80
+Runtime: 3174
+
+	. . k . . b . r 
+	. . p . p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{3,1} -> {3,0}
+70
+Runtime: 2901
+
+	. . k . . b . r 
+	. . p . p p p p 
+	. . . . . n . . 
+	R . . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{0,2} -> {1,1}
+80
+Runtime: 2421
+
+	. . . . . b . r 
+	. k p . p p p p 
+	. . . . . n . . 
+	R . . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{3,0} -> {3,1}
+70
+Runtime: 3101
+
+	. . . . . b . r 
+	. k p . p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{1,1} -> {0,2}
+80
+Runtime: 3253
+
+	. . k . . b . r 
+	. . p . p p p p 
+	. . . . . n . . 
+	. R . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+
+{3,1} -> {3,0}
+70
+Runtime: 2848
+
+	. . k . . b . r 
+	. . p . p p p p 
+	. . . . . n . . 
+	R . . p . . . . 
+	. . . . . . . . 
+	N . . . . . . . 
+	. . . P P P P P 
+	. . . . K B N R 
+

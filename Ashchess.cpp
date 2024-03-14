@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
 #include "utils.h"
 #include "movegen.h"
+#include <thread>
+#include <future>
+#include <chrono>
 using namespace std;
 #define pb push_back
 
@@ -20,7 +23,7 @@ void printMoves(vector<vector<int>> &board, int player){
     cout<<endl;
 }
 
-vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player){
+vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player, int alpha, int beta){
     // will make this function return value in the form ( {from pos x,y}, {to pos x,y}, {eval_value, player} )
     if(abs(evalBoard(board))>500 || depth == 0){
         vector<pair<int,int>> res;
@@ -39,15 +42,10 @@ vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player)
         for(auto &move : moves){
             auto pPos=move[0], nPos=move[1];
 
-            // auto nBoard = board;
-            // nBoard[nPos.first][nPos.second]=nBoard[pPos.first][pPos.second];
-            // nBoard[pPos.first][pPos.second]=0;
-            // auto result = minimax(nBoard, depth -1, -1); // index and extract eval
-
             int prevPeice =  board[nPos.first][nPos.second];
             board[nPos.first][nPos.second]=board[pPos.first][pPos.second];
             board[pPos.first][pPos.second]=0;
-            auto result = minimax(board, depth -1, -1); // index and extract eval
+            auto result = minimax(board, depth -1, -1, alpha, beta); // index and extract eval
             board[pPos.first][pPos.second]=board[nPos.first][nPos.second];
             board[nPos.first][nPos.second]=prevPeice;
 
@@ -56,6 +54,8 @@ vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player)
                 bestMove = move;
                 bestMove.pb(result[2]);
             }
+            alpha=max(alpha,result[2].first);
+            if(beta<=alpha)break;
         }
         return bestMove;
     }
@@ -64,26 +64,27 @@ vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player)
         for(auto &move : moves){
             auto pPos=move[0], nPos=move[1];
 
-            // auto nBoard = board;
-            // nBoard[nPos.first][nPos.second]=nBoard[pPos.first][pPos.second];
-            // nBoard[pPos.first][pPos.second]=0;
-            // auto result = minimax(nBoard, depth -1, 1); // index and extract eval
-
             int prevPeice =  board[nPos.first][nPos.second];
             board[nPos.first][nPos.second]=board[pPos.first][pPos.second];
             board[pPos.first][pPos.second]=0;
-            auto result = minimax(board, depth -1, 1); // index and extract eval
+            auto result = minimax(board, depth -1, 1, alpha, beta); // index and extract eval
             board[pPos.first][pPos.second]=board[nPos.first][nPos.second];
             board[nPos.first][nPos.second]=prevPeice;
-
             if(result[2].first < minEval){
                 minEval = result[2].first;
                 bestMove = move;
                 bestMove.pb(result[2]);
             }
+            beta=min(beta,result[2].first);
+            if(beta<=alpha)break;
         }
         return bestMove;
     }
+}
+
+void findValue(promise<vector<pair<int,int>>> &pr, vector<vector<int>> &board, int depth, int player){
+    vector<pair<int,int>> result = minimax(board, depth, player, -10000, 10000);
+    pr.set_value(result);
 }
 
 /*
@@ -109,100 +110,119 @@ void debugBoard(){
     }
     cout<<evalBoard(board);
     cout<<endl;
+    
+    int turn =1;
+    int startTime = clock();
+    vector<pair<int,int>> result;
+
+    promise<vector<pair<int,int>>> pr2,pr3,pr4,pr5,pr6,pr7,pr8,pr9,pr10;
+    future <vector<pair<int,int>>> ftr2 = pr2.get_future();
+    future <vector<pair<int,int>>> ftr3 = pr3.get_future();
+    future <vector<pair<int,int>>> ftr4 = pr4.get_future();
+    future <vector<pair<int,int>>> ftr5 = pr5.get_future();
+    future <vector<pair<int,int>>> ftr6 = pr6.get_future();
+    future <vector<pair<int,int>>> ftr7 = pr7.get_future();
+    future <vector<pair<int,int>>> ftr8 = pr8.get_future();
+    future <vector<pair<int,int>>> ftr9 = pr9.get_future();
+    future <vector<pair<int,int>>> ftr10 = pr10.get_future();
+
+    auto nBoard2 = board;
+    thread t2(&findValue, ref(pr2), ref(nBoard2), 2, turn);
+    auto nBoard3 = board;
+    thread t3(&findValue, ref(pr3), ref(nBoard3), 3, turn);
+    auto nBoard4 = board;
+    thread t4(&findValue, ref(pr4), ref(nBoard4), 4, turn);
+    auto nBoard5 = board;
+    thread t5(&findValue, ref(pr5), ref(nBoard5), 5, turn);
+    auto nBoard6 = board;
+    thread t6(&findValue, ref(pr6), ref(nBoard6), 6, turn);
+    auto nBoard7 = board;
+    thread t7(&findValue, ref(pr7), ref(nBoard7), 7, turn);
+    auto nBoard8 = board;
+    thread t8(&findValue, ref(pr8), ref(nBoard8), 8, turn);
+    auto nBoard9 = board;
+    thread t9(&findValue, ref(pr9), ref(nBoard9), 9, turn);
+    auto nBoard10 = board;
+    thread t10(&findValue, ref(pr10), ref(nBoard10), 10, turn);
+    
+    auto nBoard = board;
+    result = minimax(nBoard,1,turn,-10000,10000);
+    
+    this_thread :: sleep_for(chrono :: seconds(15));
+    
+    int finalDepth = 1;
+
+    if(ftr2.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr2.get(),finalDepth = 2;
+    if(ftr3.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr3.get(),finalDepth = 3;
+    if(ftr4.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr4.get(),finalDepth = 4;
+    if(ftr5.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr5.get(),finalDepth = 5;
+    if(ftr6.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr6.get(),finalDepth = 6;
+    if(ftr7.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr7.get(),finalDepth = 7;
+    if(ftr8.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr8.get(),finalDepth = 8;
+    if(ftr9.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr9.get(),finalDepth = 9;
+    if(ftr10.wait_for(chrono::seconds(0))== future_status::ready) result = ftr10.get(),finalDepth = 10;
+    t2.detach();
+    t3.detach();
+    t4.detach();
+    t5.detach();
+    t6.detach();
+    t7.detach();
+    t8.detach();
+    t9.detach();
+    t10.detach();
+
+    cout<<endl<<"Result calculated up till "<<finalDepth<<" depth, and is\n";
+    printInfo(result, startTime);
+
+    board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
+    board[result[0].first][result[0].second]=0;
+    printBoard(board);
+}
+
+void assignNums(string move, int &l1, int &r1, int &l2, int &r2){
+    r1=move[0]-'a';
+    l1='8'-move[1];
+    r2=move[2]-'a';
+    l2='8'-move[3];
 }
 
 void solve(){
     auto  board = initialPosition();
     printBoard(board);
+    int depth = 6;
+    int turn = 1;
+    while(true){
+        int k;
+        cin>>k;
+        if(k==0){
+            int startTime = clock();
+            
+            auto result = minimax(board,depth,turn,-10000,10000);
 
-    int startTime = clock();
-    auto result = minimax(board,5,1);
-    cout<<result.size()<<endl;
-    cout<<"{"<<result[0].first<<","<<result[0].second<<"}"<<" -> "<<"{"<<result[1].first<<","<<result[1].second<<"}"<<endl;
-    cout<<result[2].first<<endl;
-
-    cout<<"Runtime: "<<clock()-startTime<<endl;
+            printInfo(result, startTime);
+            board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
+            board[result[0].first][result[0].second]=0;
+            printBoard(board);
+        }
+        else if(k==2){
+            // skip turn 
+        }
+        else{
+            int l1,r1,l2,r2;
+            string moveMade;
+            cin>>moveMade;
+            assignNums(moveMade,l1,r1,l2,r2);
+            board[l2][r2]=board[l1][r1];
+            board[l1][r1]=0;
+            printBoard(board);
+        }
+        turn *= -1;
+    }
+    
 }
 
 int main(){
     solve();
+    // debugBoard();
     return 0;
 }
-
-/*
-fun minimax(board: Array<Array<Int>>, depth : Int, alph : Int, bet : Int, maximizingPlayer : Boolean): List<Int> {
-    var alpha =alph
-    var beta=bet
-//    print_board(board)
-    var valid_locations = get_valid_locations(board)
-//    print_board(board)
-    var is_terminal = is_terminal_node(board)
-    if(depth==0 || is_terminal){
-        if(is_terminal){
-            if(winning_move(board,AI_PIECE)){
-                return listOf(0,1000000000)
-            }
-            else if (winning_move(board,PLAYER_PIECE)){
-                return listOf(0,-1000000000)
-            }
-            else{
-                return listOf(0,0)
-            }
-        }
-        else{
-            return listOf(0, score_position(board,AI_PIECE))
-        }
-    }
-    if(maximizingPlayer){
-        var value = Int.MIN_VALUE
-        var column = valid_locations[(abs(Random.nextInt()))%valid_locations.size]
-        for(col in valid_locations){
-            var row = get_next_open_row(board,col)
-//            var b_copy = board.copyOf()
-            var b_copy = Array(6){Array(7){0}}
-            for(i in 0 until board.size){
-                for(j in 0 until board[0].size){
-                    b_copy[i][j]=board[i][j]
-                }
-            }
-            drop_peice(b_copy,row,col,AI_PIECE)
-            var new_score=minimax(b_copy,depth-1,alpha,beta,false)[1]
-            if(new_score>value){
-                value=new_score
-                column=col
-            }
-            alpha=max(alpha,value)
-            if(alpha>=beta){
-                break
-            }
-        }
-        return listOf(column,value)
-    }
-    else{
-        var value=Int.MAX_VALUE
-        var column = valid_locations[(abs(Random.nextInt()))%valid_locations.size]
-        for(col in valid_locations){
-            var row=get_next_open_row(board, col)
-//            var b_copy = board.copyOf()
-            var b_copy = Array(6){Array(7){0}}
-            for(i in 0 until board.size){
-                for(j in 0 until board[0].size){
-                    b_copy[i][j]=board[i][j]
-                }
-            }
-            drop_peice(b_copy,row,col,PLAYER_PIECE)
-            var new_score= minimax(b_copy,depth-1,alpha,beta,true)[1]
-            if(new_score<value){
-                value=new_score
-                column=col
-            }
-            beta=min(beta,value)
-            if(alpha>=beta){
-                break
-            }
-        }
-        return listOf(column,value)
-
-    }
-}
-*/
