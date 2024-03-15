@@ -7,6 +7,8 @@
 using namespace std;
 #define pb push_back
 
+bool time_over;
+
 /*
     cd "c:\Users\ashra\OneDrive\Desktop\STUDY\stockfish\Strong Determination\" ; if ($?) { g++ Ashchess.cpp utils.cpp utils.h movegen.h movegen.cpp  -o Ashchess } ; if ($?) { .\Ashchess }
 */
@@ -24,6 +26,13 @@ void printMoves(vector<vector<int>> &board, int player){
 }
 
 vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player, int alpha, int beta){
+    if(time_over){
+        vector<pair<int,int>> res;
+        res.pb({0,0});
+        res.pb({0,0});
+        res.pb({0,0});
+        return res;
+    }
     // will make this function return value in the form ( {from pos x,y}, {to pos x,y}, {eval_value, player} )
     if(abs(evalBoard(board))>500 || depth == 0){
         vector<pair<int,int>> res;
@@ -36,7 +45,7 @@ vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player,
         return res;
     }
     vector<vector<pair<int,int>>> moves=allPosibleMoves(player,board);
-    auto bestMove = moves[rand()%moves.size()];
+    auto bestMove = moves[clock()%moves.size()];
     if(player>0){
         int maxEval=-10000;
         for(auto &move : moves){
@@ -87,18 +96,8 @@ void findValue(promise<vector<pair<int,int>>> &pr, vector<vector<int>> &board, i
     pr.set_value(result);
 }
 
-/*
-    r n b q k b . r 
-	p p p p . p p p 
-	. . . . . n . . 
-	. . . . p . . . 
-	Q . . . . . . . 
-	. . P . . . . . 
-	P P . P P P P P 
-	R N B . K B N R 
-*/
-
 void debugBoard(){
+    time_over = false;
     auto  board = customPosition();
     printBoard(board);
     auto k = allPosibleMoves(1,board);
@@ -115,7 +114,7 @@ void debugBoard(){
     int startTime = clock();
     vector<pair<int,int>> result;
 
-    promise<vector<pair<int,int>>> pr2,pr3,pr4,pr5,pr6,pr7,pr8,pr9,pr10;
+    promise<vector<pair<int,int>>> pr2,pr3,pr4,pr5,pr6,pr7,pr8,pr9;
     future <vector<pair<int,int>>> ftr2 = pr2.get_future();
     future <vector<pair<int,int>>> ftr3 = pr3.get_future();
     future <vector<pair<int,int>>> ftr4 = pr4.get_future();
@@ -124,7 +123,6 @@ void debugBoard(){
     future <vector<pair<int,int>>> ftr7 = pr7.get_future();
     future <vector<pair<int,int>>> ftr8 = pr8.get_future();
     future <vector<pair<int,int>>> ftr9 = pr9.get_future();
-    future <vector<pair<int,int>>> ftr10 = pr10.get_future();
 
     auto nBoard2 = board;
     thread t2(&findValue, ref(pr2), ref(nBoard2), 2, turn);
@@ -142,13 +140,11 @@ void debugBoard(){
     thread t8(&findValue, ref(pr8), ref(nBoard8), 8, turn);
     auto nBoard9 = board;
     thread t9(&findValue, ref(pr9), ref(nBoard9), 9, turn);
-    auto nBoard10 = board;
-    thread t10(&findValue, ref(pr10), ref(nBoard10), 10, turn);
     
     auto nBoard = board;
     result = minimax(nBoard,1,turn,-10000,10000);
     
-    this_thread :: sleep_for(chrono :: seconds(15));
+    this_thread :: sleep_for(chrono :: seconds(40));
     
     int finalDepth = 1;
 
@@ -160,16 +156,18 @@ void debugBoard(){
     if(ftr7.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr7.get(),finalDepth = 7;
     if(ftr8.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr8.get(),finalDepth = 8;
     if(ftr9.wait_for(chrono::seconds(0)) == future_status::ready) result = ftr9.get(),finalDepth = 9;
-    if(ftr10.wait_for(chrono::seconds(0))== future_status::ready) result = ftr10.get(),finalDepth = 10;
-    t2.detach();
-    t3.detach();
-    t4.detach();
-    t5.detach();
-    t6.detach();
-    t7.detach();
-    t8.detach();
-    t9.detach();
-    t10.detach();
+
+    time_over = true; 
+    this_thread :: sleep_for(chrono :: seconds(1));
+
+    t2.join();
+    t3.join();
+    t4.join();
+    t5.join();
+    t6.join();
+    t7.join();
+    t8.join();
+    t9.join();
 
     cout<<endl<<"Result calculated up till "<<finalDepth<<" depth, and is\n";
     printInfo(result, startTime);
@@ -222,7 +220,8 @@ void solve(){
 }
 
 int main(){
-    solve();
-    // debugBoard();
+    srand(time(NULL));
+    // solve();
+    debugBoard();
     return 0;
 }
