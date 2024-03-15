@@ -1,46 +1,40 @@
-AshChess Chess Engine
-
-# Chess Engine
+# AshChess Chess Engine
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
-This is a chess engine implemented in [programming language]. It allows you to play chess against the engine, analyze games, and integrate it into other applications.
+This is a relatively simple chess engine implemented in [C++]. It allows you to play chess against the engine, analyze games, and integrate it into other applications.
 
 ## Features
 
 - Play against the engine
-- Adjustable difficulty levels
+- Set timely moves, I.e., enter a time 'x' seconds, and the best move that could be made in x seconds would be made by the code
 - Game analysis
-- Integration support for other projects
-- [Add more features]
+- Simple function calls, that can be implemented in APIs.
+- Multi-Threading Enabled
 
 ## Installation
 
-[Provide instructions on how to install and set up your chess engine. Include any dependencies that need to be installed, and any configuration steps necessary.]
+Step 1: Clone this Repository
+```
+git clone https://github.com/Ashrayyy/AshChess-Chess-Engine.git
+```
+That's it, then compile the project.
+
+### Note: The w64 MinGW Compiler will not be able to compile the project, you need to add future and threading libraries manually (or install a posix build of MinGW with multithreading support)
 
 ## Usage
 
-[Explain how to use your chess engine. Provide examples of commands or code snippets to demonstrate its functionality.]
+### Run the Program
+You can set time per move, or set the position in the code.
 
-## Examples
-
-[Provide example games or screenshots demonstrating your chess engine in action.]
-
-## Contributing
-
-[Explain how others can contribute to your project. Include guidelines for pull requests and contributions.]
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Credits
-
-[Give credit to any contributors, libraries, or resources you used in your project.]
+An infinite loops run that always waits for inputs
+enter 0 for the engine to make the move
+enter 1 for making a manual move.
+enter 2 for skipping a turn (for development and debugging purposes (and for special moves like castling/promotion/en-passant))
 
 ## Contact
 
-[Provide your contact information in case users have questions or want to reach out to you.]
+In case you want to contribute to the project, or if you have any queries, you can reach me at [ashrayy.tiwari@gmail.com] or dm me at my LinkedIn[https://www.linkedin.com/in/ashrayy/] !
 
