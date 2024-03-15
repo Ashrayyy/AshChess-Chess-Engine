@@ -192,3 +192,104 @@ vector<vector<pair<int,int>>> allPosibleMoves(int color, vector<vector<int>> boa
     });
     return moves;
 }
+
+bool checkIfUnderAttack(pair<int,int> pos, vector<vector<int>> &board, int color){
+    int val = color;
+
+    // Bishop and Queen Checks
+    int j=pos.second;
+    for(int i=pos.first+1;i<8;i++){
+        j++;
+        if(isInvalid(i,j)) break;
+        if(isSame(val,board[i][j])) break;
+        if(isDifferent(val,board[i][j])){
+            if(abs(board[i][j]) == 90 || abs(board[i][j]) == 31) return true;
+        }
+    }
+    j=pos.second;
+    for(int i=pos.first+1;i<8;i++){
+        j--;
+        if(isInvalid(i,j))break;
+        if(isSame(val,board[i][j]))break;
+        if(isDifferent(val,board[i][j])){
+            if(abs(board[i][j]) == 90 || abs(board[i][j]) == 31) return true;
+        }
+    }
+    j=pos.second;
+    for(int i=pos.first-1;i>=0;i--){
+        j++;
+        if(isInvalid(i,j))break;
+        if(isSame(val,board[i][j]))break;
+        if(isDifferent(val,board[i][j])){
+            if(abs(board[i][j]) == 90 || abs(board[i][j]) == 31) return true;
+        }
+    }
+    j=pos.second;
+    for(int i=pos.first-1;i>=0;i--){
+        j--;
+        if(isInvalid(i,j))break;
+        if(isSame(val,board[i][j]))break;
+        if(isDifferent(val,board[i][j])){
+            if(abs(board[i][j]) == 90 || abs(board[i][j]) == 31) return true;
+        }
+    }
+    
+    // Rook and Queen checks 
+    for(int i=pos.first+1;i<8;i++){
+        if(isSame(val,board[i][pos.second]))break;
+        if(isDifferent(val,board[i][pos.second])){
+            if(abs(board[i][pos.second]) == 90 || abs(board[i][pos.second]) == 50) return true;
+        }
+    }
+    for(int i=pos.first-1;i>=0;i--){
+        if(isSame(val,board[i][pos.second]))break;
+        if(isDifferent(val,board[i][pos.second])){
+            if(abs(board[i][pos.second]) == 90 || abs(board[i][pos.second]) == 50) return true;
+        }
+    }
+    for(int i=pos.second-1;i>=0;i--){
+        if(isSame(val,board[pos.first][i]))break;
+        if(isDifferent(val,board[pos.first][i])){
+            if(abs(board[pos.first][i]) == 90 || abs(board[pos.first][i]) == 50) return true;
+        }
+    }
+    for(int i=pos.second+1;i<8;i++){
+        if(isSame(val,board[pos.first][i]))break;
+        if(isDifferent(val,board[pos.first][i])){
+            if(abs(board[pos.first][i]) == 90 || abs(board[pos.first][i]) == 50) return true;
+        }
+    }
+
+    // knight checks
+    for(auto xy:knightMoves){
+        int nx=pos.first+xy.first;
+        int ny=pos.second+xy.second;
+        if(isInvalid(nx,ny))continue;;
+        if(isDifferent(val,board[nx][ny]) && abs(board[nx][ny])==30) return true;
+    }
+
+    // king checks
+    for(auto xy:kingMoves){
+        int nx=pos.first+xy.first;
+        int ny=pos.second+xy.second;
+        if(isInvalid(nx,ny))continue;;
+        if(isDifferent(val,board[nx][ny]) && abs(board[nx][ny])==1000) return true;
+    }
+
+    // pawns checks
+    if(color > 0){
+        bool left = (!isInvalid(pos.first-1,pos.second-1) && (board[pos.first-1][pos.second-1]==-10));
+        bool right = (!isInvalid(pos.first-1,pos.second+1) && (board[pos.first-1][pos.second+1]==-10));
+        if(left || right){
+            return true;
+        }
+    }
+    else{
+        bool left = (!isInvalid(pos.first+1,pos.second-1) && (board[pos.first+1][pos.second-1]==10));
+        bool right = (!isInvalid(pos.first+1,pos.second+1) && (board[pos.first+1][pos.second+1]==10));
+        if(left || right){
+            return true;
+        }
+    }
+    return false;
+}
