@@ -22,7 +22,7 @@ git clone https://github.com/Ashrayyy/AshChess-Chess-Engine.git
 ```
 That's it, then compile the project.
 
-### Note: The w64 MinGW Compiler will not be able to compile the project, you need to add future and threading libraries manually (or install a posix build of MinGW with multithreading support)
+##### Note: The w64 MinGW Compiler will not be able to compile the project, you need to add future and threading libraries manually (or install a posix build of MinGW with multithreading support)
 
 ## Usage
 
@@ -33,6 +33,13 @@ An infinite loops run that always waits for inputs
 enter 0 for the engine to make the move
 enter 1 for making a manual move.
 enter 2 for skipping a turn (for development and debugging purposes (and for special moves like castling/promotion/en-passant))
+
+## Credits
+
+This Chess engine was a fun project, I love chess and I wanted to make some project realted to the game.
+
+The input move format is inspired from TSCP (Tom Kerrigan's Simple Chess Program) [http://www.tckerrigan.com/Chess/TSCP/] 
+and a lot of openings placed in the openings file is his work.
 
 ## Contact
 
