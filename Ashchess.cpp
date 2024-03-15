@@ -13,8 +13,8 @@ bool time_over;
     cd "c:\Users\ashra\OneDrive\Desktop\STUDY\stockfish\Strong Determination\" ; if ($?) { g++ Ashchess.cpp utils.cpp utils.h movegen.h movegen.cpp  -o Ashchess } ; if ($?) { .\Ashchess }
 */
 
-void printMoves(vector<vector<int>> &board, int player){
-    auto k = allPosibleMoves(player,board);
+void printMoves(vector<vector<int>> &board, int player, int csw, int csb){
+    auto k = allPossibleMoves(player,board, csw, csb);
     for(auto l:k){
         for(auto j:l){
             cout<<j.first<<" "<<j.second<<" :";
@@ -25,7 +25,7 @@ void printMoves(vector<vector<int>> &board, int player){
     cout<<endl;
 }
 
-vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player, int alpha, int beta){
+vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player, int alpha, int beta, int csw, int csb){
     if(time_over){
         vector<pair<int,int>> res;
         res.pb({0,0});
@@ -41,58 +41,160 @@ vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player,
         res.pb({evalBoard(board),0});
         // printBoard(board);
         // cout<<"\t"<<evalBoard(board)<<endl<<endl<<endl;;
-        // printMoves(board,player);
+        // printMoves(board,player,csw,csb);
         return res;
     }
-    vector<vector<pair<int,int>>> moves=allPosibleMoves(player,board);
+    vector<vector<pair<int,int>>> moves=allPossibleMoves(player,board,csw,csb);
     auto bestMove = moves[clock()%moves.size()];
     if(player>0){
         int maxEval=-10000;
         for(auto &move : moves){
-            auto pPos=move[0], nPos=move[1];
+            if(move.size() == 4){
+                auto pkPos=move[0], nkPos=move[1], prPos = move[2], nrPos = move[3];
 
-            int prevPeice =  board[nPos.first][nPos.second];
-            board[nPos.first][nPos.second]=board[pPos.first][pPos.second];
-            board[pPos.first][pPos.second]=0;
-            auto result = minimax(board, depth -1, -1, alpha, beta); // index and extract eval
-            board[pPos.first][pPos.second]=board[nPos.first][nPos.second];
-            board[nPos.first][nPos.second]=prevPeice;
+                swap(board[nkPos.first][nkPos.second],board[pkPos.first][pkPos.second]);
+                swap(board[nrPos.first][nrPos.second],board[prPos.first][prPos.second]);
+                if(csw >= 2){
+                    if(board[7][0]!=50) csw-=2;
+                }
+                if(csw % 2){
+                    if(board[7][7]!=50) csw-=1;
+                }
+                if(csb >= 2){
+                    if(board[0][0]!=-50) csb-=2;
+                }
+                if(csb % 2){
+                    if(board[0][7]!=-50) csb-=1;
+                }
+                if(board[7][4]!=1000) csw=0;
+                if(board[0][4]!=1000) csb=0;
 
-            if(result[2].first > maxEval){
-                maxEval = result[2].first;
-                bestMove = move;
-                bestMove.pb(result[2]);
+                auto result = minimax(board, depth -1, -1, alpha, beta, csw, csb); // index and extract eval
+
+                swap(board[nkPos.first][nkPos.second],board[pkPos.first][pkPos.second]);
+                swap(board[nrPos.first][nrPos.second],board[prPos.first][prPos.second]);
+
+                if(result.back().first > maxEval){
+                    maxEval = result.back().first;
+                    bestMove = move;
+                    bestMove.pb(result.back());
+                }
+                alpha=max(alpha,result.back().first);
+                if(beta<=alpha)break;
             }
-            alpha=max(alpha,result[2].first);
-            if(beta<=alpha)break;
+            else{
+                auto pPos=move[0], nPos=move[1];
+
+                int prevPeice =  board[nPos.first][nPos.second];
+                board[nPos.first][nPos.second]=board[pPos.first][pPos.second];
+                board[pPos.first][pPos.second]=0;
+                if(csw >= 2){
+                    if(board[7][0]!=50) csw-=2;
+                }
+                if(csw % 2){
+                    if(board[7][7]!=50) csw-=1;
+                }
+                if(csb >= 2){
+                    if(board[0][0]!=-50) csb-=2;
+                }
+                if(csb % 2){
+                    if(board[0][7]!=-50) csb-=1;
+                }
+                if(board[7][4]!=1000) csw=0;
+                if(board[0][4]!=1000) csb=0;
+
+                auto result = minimax(board, depth -1, -1, alpha, beta, csw, csb); // index and extract eval
+                board[pPos.first][pPos.second]=board[nPos.first][nPos.second];
+                board[nPos.first][nPos.second]=prevPeice;
+
+                if(result.back().first > maxEval){
+                    maxEval = result.back().first;
+                    bestMove = move;
+                    bestMove.pb(result.back());
+                }
+                alpha=max(alpha,result.back().first);
+                if(beta<=alpha)break;
+            }
         }
         return bestMove;
     }
     else{
         int minEval=10000;
         for(auto &move : moves){
-            auto pPos=move[0], nPos=move[1];
+            if(move.size() == 4){
+                auto pkPos=move[0], nkPos=move[1], prPos = move[2], nrPos = move[3];
 
-            int prevPeice =  board[nPos.first][nPos.second];
-            board[nPos.first][nPos.second]=board[pPos.first][pPos.second];
-            board[pPos.first][pPos.second]=0;
-            auto result = minimax(board, depth -1, 1, alpha, beta); // index and extract eval
-            board[pPos.first][pPos.second]=board[nPos.first][nPos.second];
-            board[nPos.first][nPos.second]=prevPeice;
-            if(result[2].first < minEval){
-                minEval = result[2].first;
-                bestMove = move;
-                bestMove.pb(result[2]);
+                swap(board[nkPos.first][nkPos.second],board[pkPos.first][pkPos.second]);
+                swap(board[nrPos.first][nrPos.second],board[prPos.first][prPos.second]);
+                if(csw >= 2){
+                    if(board[7][0]!=50) csw-=2;
+                }
+                if(csw % 2){
+                    if(board[7][7]!=50) csw-=1;
+                }
+                if(csb >= 2){
+                    if(board[0][0]!=-50) csb-=2;
+                }
+                if(csb % 2){
+                    if(board[0][7]!=-50) csb-=1;
+                }
+                if(board[7][4]!=1000) csw=0;
+                if(board[0][4]!=1000) csb=0;
+
+                auto result = minimax(board, depth -1, -1, alpha, beta, csw, csb); // index and extract eval
+                
+                swap(board[nkPos.first][nkPos.second],board[pkPos.first][pkPos.second]);
+                swap(board[nrPos.first][nrPos.second],board[prPos.first][prPos.second]);
+
+                if(result.back().first < minEval){
+                    minEval = result.back().first;
+                    bestMove = move;
+                    bestMove.pb(result.back());
+                }
+                beta=min(beta,result.back().first);
+                if(beta<=alpha)break;
             }
-            beta=min(beta,result[2].first);
-            if(beta<=alpha)break;
+            else{
+                auto pPos=move[0], nPos=move[1];
+
+                int prevPeice =  board[nPos.first][nPos.second];
+                board[nPos.first][nPos.second]=board[pPos.first][pPos.second];
+                board[pPos.first][pPos.second]=0;
+
+                
+                if(csw >= 2){
+                    if(board[7][0]!=50) csw-=2;
+                }
+                if(csw % 2){
+                    if(board[7][7]!=50) csw-=1;
+                }
+                if(csb >= 2){
+                    if(board[0][0]!=-50) csb-=2;
+                }
+                if(csb % 2){
+                    if(board[0][7]!=-50) csb-=1;
+                }
+                if(board[7][4]!=1000) csw=0;
+                if(board[0][4]!=1000) csb=0;
+
+                auto result = minimax(board, depth -1, 1, alpha, beta, csw, csb); // index and extract eval
+                board[pPos.first][pPos.second]=board[nPos.first][nPos.second];
+                board[nPos.first][nPos.second]=prevPeice;
+                if(result.back().first < minEval){
+                    minEval = result.back().first;
+                    bestMove = move;
+                    bestMove.pb(result.back());
+                }
+                beta=min(beta,result.back().first);
+                if(beta<=alpha)break;
+            }
         }
         return bestMove;
     }
 }
 
-void findValue(promise<vector<pair<int,int>>> &pr, vector<vector<int>> &board, int depth, int player){
-    vector<pair<int,int>> result = minimax(board, depth, player, -10000, 10000);
+void findValue(promise<vector<pair<int,int>>> &pr, vector<vector<int>> &board, int depth, int player,int csw,int csb){
+    vector<pair<int,int>> result = minimax(board, depth, player, -10000, 10000,csw,csb);
     pr.set_value(result);
 }
 
@@ -100,7 +202,8 @@ void debugBoard(){
     time_over = false;
     auto  board = customPosition();
     printBoard(board);
-    auto k = allPosibleMoves(1,board);
+    int csw=3,csb=3;
+    auto k = allPossibleMoves(1,board,csw,csb);
     for(auto l:k){
         for(auto j:l){
             cout<<j.first<<" "<<j.second<<" :";
@@ -125,24 +228,24 @@ void debugBoard(){
     future <vector<pair<int,int>>> ftr9 = pr9.get_future();
 
     auto nBoard2 = board;
-    thread t2(&findValue, ref(pr2), ref(nBoard2), 2, turn);
+    thread t2(&findValue, ref(pr2), ref(nBoard2), 2, turn, csw, csb);
     auto nBoard3 = board;
-    thread t3(&findValue, ref(pr3), ref(nBoard3), 3, turn);
+    thread t3(&findValue, ref(pr3), ref(nBoard3), 3, turn, csw, csb);
     auto nBoard4 = board;
-    thread t4(&findValue, ref(pr4), ref(nBoard4), 4, turn);
+    thread t4(&findValue, ref(pr4), ref(nBoard4), 4, turn, csw, csb);
     auto nBoard5 = board;
-    thread t5(&findValue, ref(pr5), ref(nBoard5), 5, turn);
+    thread t5(&findValue, ref(pr5), ref(nBoard5), 5, turn, csw, csb);
     auto nBoard6 = board;
-    thread t6(&findValue, ref(pr6), ref(nBoard6), 6, turn);
+    thread t6(&findValue, ref(pr6), ref(nBoard6), 6, turn, csw, csb);
     auto nBoard7 = board;
-    thread t7(&findValue, ref(pr7), ref(nBoard7), 7, turn);
+    thread t7(&findValue, ref(pr7), ref(nBoard7), 7, turn, csw, csb);
     auto nBoard8 = board;
-    thread t8(&findValue, ref(pr8), ref(nBoard8), 8, turn);
+    thread t8(&findValue, ref(pr8), ref(nBoard8), 8, turn, csw, csb);
     auto nBoard9 = board;
-    thread t9(&findValue, ref(pr9), ref(nBoard9), 9, turn);
+    thread t9(&findValue, ref(pr9), ref(nBoard9), 9, turn, csw, csb);
     
     auto nBoard = board;
-    result = minimax(nBoard,1,turn,-10000,10000);
+    result = minimax(nBoard,1,turn,-10000,10000,3,3);
     
     this_thread :: sleep_for(chrono :: seconds(40));
     
@@ -172,8 +275,14 @@ void debugBoard(){
     cout<<endl<<"Result calculated up till "<<finalDepth<<" depth, and is\n";
     printInfo(result, startTime);
 
-    board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
-    board[result[0].first][result[0].second]=0;
+    if(result.size()>=4){
+        swap(board[result[0].first][result[0].second],board[result[1].first][result[1].second]);
+        swap(board[result[2].first][result[2].second],board[result[3].first][result[3].second]);
+    }
+    else{  
+        board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
+        board[result[0].first][result[0].second]=0;
+    }
     printBoard(board);
 }
 
@@ -184,10 +293,10 @@ void assignNums(string move, int &l1, int &r1, int &l2, int &r2){
     l2='8'-move[3];
 }
 
-void makeMove(vector<vector<int>> &board, int player, int time){
+void makeMove(vector<vector<int>> &board, int player, int time, int &csw, int &csb){
     time_over = false;
     int turn = player;
-    auto k = allPosibleMoves(turn,board);
+    auto k = allPossibleMoves(turn,board, csw, csb);
     
     int startTime = clock();
     vector<pair<int,int>> result;
@@ -220,7 +329,7 @@ void makeMove(vector<vector<int>> &board, int player, int time){
     thread t9(&findValue, ref(pr9), ref(nBoard9), 9, turn);
     
     auto nBoard = board;
-    result = minimax(nBoard,1,turn,-10000,10000);
+    result = minimax(nBoard,1,turn,-10000,10000,csw,csb);
     
     this_thread :: sleep_for(chrono :: seconds(time));
     
@@ -250,8 +359,29 @@ void makeMove(vector<vector<int>> &board, int player, int time){
     cout<<endl<<"Result calculated up till "<<finalDepth<<" depth, and is\n";
     printInfo(result, startTime);
 
-    board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
-    board[result[0].first][result[0].second]=0;
+    if(result.size()>=4){
+        swap(board[result[0].first][result[0].second],board[result[1].first][result[1].second]);
+        swap(board[result[2].first][result[2].second],board[result[3].first][result[3].second]);
+    }
+    else{
+        board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
+        board[result[0].first][result[0].second]=0;
+    }
+
+    if(csw >= 2){
+        if(board[7][0]!=50) csw-=2;
+    }
+    if(csw % 2){
+        if(board[7][7]!=50) csw-=1;
+    }
+    if(csb >= 2){
+        if(board[0][0]!=-50) csb-=2;
+    }
+    if(csb % 2){
+        if(board[0][7]!=-50) csb-=1;
+    }
+    if(board[7][4]!=1000) csw=0;
+    if(board[0][4]!=1000) csb=0;
 }
 
 void solve(){
@@ -259,6 +389,7 @@ void solve(){
     printBoard(board);
     int depth = 6;
     int turn = 1;
+    int csw=3,csb=3;
     while(true){
         int k;
         cin>>k;
@@ -266,7 +397,7 @@ void solve(){
             int startTime = clock();
 
             // Multithreading Enabled Function
-            makeMove(board, turn, 10);
+            makeMove(board, turn, 10,csw,csb);
 
             // Disabled Multithreading, simple defined depth search code
             // auto result = minimax(board,depth,turn,-10000,10000);

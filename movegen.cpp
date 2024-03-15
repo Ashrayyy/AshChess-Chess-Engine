@@ -126,6 +126,107 @@ vector<pair<int,int>> possibleQueenMoves(pair<int,int> pos, vector<vector<int>> 
     return moves;
 }
 
+bool checkIfUnderAttack(pair<int,int> pos, vector<vector<int>> &board, int color){
+    int j=pos.second;
+    int val = color;
+
+    // Bishop and Queen Checks
+    for(int i=pos.first+1;i<8;i++){
+        j++;
+        if(isInvalid(i,j)) break;
+        if(isSame(val,board[i][j])) break;
+        if(isDifferent(val,board[i][j])){
+            if(abs(board[i][j]) == 90 || abs(board[i][j]) == 31) return true;
+        }
+    }
+    j=pos.second;
+    for(int i=pos.first+1;i<8;i++){
+        j--;
+        if(isInvalid(i,j))break;
+        if(isSame(val,board[i][j]))break;
+        if(isDifferent(val,board[i][j])){
+            if(abs(board[i][j]) == 90 || abs(board[i][j]) == 31) return true;
+        }
+    }
+    j=pos.second;
+    for(int i=pos.first-1;i>=0;i--){
+        j++;
+        if(isInvalid(i,j))break;
+        if(isSame(val,board[i][j]))break;
+        if(isDifferent(val,board[i][j])){
+            if(abs(board[i][j]) == 90 || abs(board[i][j]) == 31) return true;
+        }
+    }
+    j=pos.second;
+    for(int i=pos.first-1;i>=0;i--){
+        j--;
+        if(isInvalid(i,j))break;
+        if(isSame(val,board[i][j]))break;
+        if(isDifferent(val,board[i][j])){
+            if(abs(board[i][j]) == 90 || abs(board[i][j]) == 31) return true;
+        }
+    }
+    
+    // Rook and Queen checks 
+    for(int i=pos.first+1;i<8;i++){
+        if(isSame(val,board[i][pos.second]))break;
+        if(isDifferent(val,board[i][pos.second])){
+            if(abs(board[i][pos.second]) == 90 || abs(board[i][pos.second]) == 50) return true;
+        }
+    }
+    for(int i=pos.first-1;i>=0;i--){
+        if(isSame(val,board[i][pos.second]))break;
+        if(isDifferent(val,board[i][pos.second])){
+            if(abs(board[i][pos.second]) == 90 || abs(board[i][pos.second]) == 50) return true;
+        }
+    }
+    for(int i=pos.second-1;i>=0;i--){
+        if(isSame(val,board[pos.first][i]))break;
+        if(isDifferent(val,board[pos.first][i])){
+            if(abs(board[pos.first][i]) == 90 || abs(board[pos.first][i]) == 50) return true;
+        }
+    }
+    for(int i=pos.second+1;i<8;i++){
+        if(isSame(val,board[pos.first][i]))break;
+        if(isDifferent(val,board[pos.first][i])){
+            if(abs(board[pos.first][i]) == 90 || abs(board[pos.first][i]) == 50) return true;
+        }
+    }
+
+    // knight checks
+    for(auto xy:knightMoves){
+        int nx=pos.first+xy.first;
+        int ny=pos.second+xy.second;
+        if(isInvalid(nx,ny))continue;;
+        if(isDifferent(val,board[nx][ny]) && abs(board[nx][ny])==30) return true;
+    }
+
+    // king checks
+    for(auto xy:kingMoves){
+        int nx=pos.first+xy.first;
+        int ny=pos.second+xy.second;
+        if(isInvalid(nx,ny))continue;;
+        if(isDifferent(val,board[nx][ny]) && abs(board[nx][ny])==1000) return true;
+    }
+
+    // pawns checks
+    if(color > 0){
+        bool left = (!isInvalid(pos.first-1,pos.second-1) && (board[pos.first-1][pos.second-1]==-10));
+        bool right = (!isInvalid(pos.first-1,pos.second+1) && (board[pos.first-1][pos.second+1]==-10));
+        if(left || right){
+            return true;
+        }
+    }
+    else{
+        bool left = (!isInvalid(pos.first+1,pos.second-1) && (board[pos.first+1][pos.second-1]==10));
+        bool right = (!isInvalid(pos.first+1,pos.second+1) && (board[pos.first+1][pos.second+1]==10));
+        if(left || right){
+            return true;
+        }
+    }
+    return false;
+}
+
 vector<pair<int,int>> possibleKingMoves(pair<int,int> pos, vector<vector<int>> &board){
     if(kingMoves.size()==0)movegenInit();
     int val = board[pos.first][pos.second];
@@ -138,6 +239,70 @@ vector<pair<int,int>> possibleKingMoves(pair<int,int> pos, vector<vector<int>> &
         moves.pb({nx,ny});
     }
     return moves;
+}
+
+void castles(vector<vector<pair<int,int>>> &refMoves, pair<int,int> pos, vector<vector<int>> &board, int color, int csw, int csb){
+    vector<pair<int,int>> moves;
+    if(color == 1){
+        if(csw >= 2 && board[7][3]==0 && board[7][2]==0){
+            //check O-O-O
+            if(!checkIfUnderAttack({7,4},board,color) && !checkIfUnderAttack({7,3},board,color) && !checkIfUnderAttack({7,2},board,color)){
+                //O-O-O possible
+                moves.pb({7,4});
+                moves.pb({7,2});
+                moves.pb({7,0});
+                moves.pb({7,3});
+            }
+        }
+        if(moves.size()){
+            refMoves.pb(moves);
+            moves.clear();
+        }
+        if(csw%2 && board[7][5]==0 && board[7][6]==0){
+            //check O-O
+            if(!checkIfUnderAttack({7,4},board,color) && !checkIfUnderAttack({7,5},board,color) && !checkIfUnderAttack({7,6},board,color)){
+                //O-O possible
+                moves.pb({7,4});
+                moves.pb({7,6});
+                moves.pb({7,7});
+                moves.pb({7,5});
+            }
+        }
+        if(moves.size()){
+            refMoves.pb(moves);
+            moves.clear();
+        }
+    }
+    else{
+        if(csb >= 2 && board[0][3]==0 && board[0][2]==0){
+            //check O-O-O
+            if(!checkIfUnderAttack({0,4},board,color) && !checkIfUnderAttack({0,3},board,color) && !checkIfUnderAttack({0,2},board,color)){
+                //O-O-O possible
+                moves.pb({0,4});
+                moves.pb({0,2});
+                moves.pb({0,0});
+                moves.pb({0,3});
+            }
+        }
+        if(moves.size()){
+            refMoves.pb(moves);
+            moves.clear();
+        }
+        if(csb%2 && board[0][5]==0 && board[0][6]==0){
+            //check O-O
+            if(!checkIfUnderAttack({0,4},board,color) && !checkIfUnderAttack({0,5},board,color) && !checkIfUnderAttack({0,6},board,color)){
+                //O-O possible
+                moves.pb({0,4});
+                moves.pb({0,6});
+                moves.pb({0,7});
+                moves.pb({0,5});
+            }
+        }
+        if(moves.size()){
+            refMoves.pb(moves);
+            moves.clear();
+        }
+    }
 }
 
 vector<pair<int,int>> possiblePawnMoves(pair<int,int> pos, vector<vector<int>> &board){
@@ -158,7 +323,7 @@ vector<pair<int,int>> possiblePawnMoves(pair<int,int> pos, vector<vector<int>> &
     return moves;
 }
 
-vector<vector<pair<int,int>>> allPosibleMoves(int color, vector<vector<int>> board){
+vector<vector<pair<int,int>>> allPossibleMoves(int color, vector<vector<int>> board, int csw, int csb){
     // i will put color as 1 or -1
     vector<vector<pair<int,int>>> moves;
     for(int i=0;i<8;i++){
@@ -170,7 +335,10 @@ vector<vector<pair<int,int>>> allPosibleMoves(int color, vector<vector<int>> boa
                 if(abs(board[i][j])==31) peiceMoves = possibleBishopMoves({i,j},board);
                 if(abs(board[i][j])==50) peiceMoves = possibleRookMoves({i,j},board);
                 if(abs(board[i][j])==90) peiceMoves = possibleQueenMoves({i,j},board);
-                if(abs(board[i][j])==1000) peiceMoves = possibleKingMoves({i,j},board);
+                if(abs(board[i][j])==1000) {
+                    peiceMoves = possibleKingMoves({i,j},board);
+                    castles(moves, {i,j}, board, color, csw, csb);
+                }
             }
             for(auto move:peiceMoves){
                 vector<pair<int,int>> iMove;
