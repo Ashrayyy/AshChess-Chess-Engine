@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include "movegen.h"
 using namespace std;
 #define pb push_back
 unordered_map<int,char> peice; // score,peice
@@ -22,8 +23,26 @@ void utilsInit(){
 
 int evalBoard(vector<vector<int>> &board){
     int sum=0;
-    for(auto row : board){
-        for(auto col:row)sum+=col;
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            sum+=board[i][j];
+
+            //knights in the mid heuristic
+            if(abs(board[i][j])==30 && i>1 && i<6 && j>1 && j<6)sum+=board[i][j]/30;
+
+            //pawns ahead heuristic
+            if(board[i][j]==10 && i<=4)sum+=4-i;
+            if(board[i][j]==-10 && i>=5)sum-=i-5;
+
+            //king in side heuristic
+            if(board[i][j]==1000)sum-=min(abs(j-2),abs(j-6));
+            if(board[i][j]==-1000)sum+=min(abs(j-2),abs(j-6));
+
+            //rook at sevent rank heuristic
+
+            if(board[i][j]==50 && i==1)sum++; 
+            if(board[i][j]==-50 && i==6)sum--; 
+        }
     }
     return sum;
 }
