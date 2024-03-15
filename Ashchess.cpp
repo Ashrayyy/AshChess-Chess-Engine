@@ -187,7 +187,6 @@ void assignNums(string move, int &l1, int &r1, int &l2, int &r2){
 void makeMove(vector<vector<int>> &board, int player, int time){
     time_over = false;
     int turn = player;
-    printBoard(board);
     auto k = allPosibleMoves(turn,board);
     
     int startTime = clock();
@@ -253,7 +252,6 @@ void makeMove(vector<vector<int>> &board, int player, int time){
 
     board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
     board[result[0].first][result[0].second]=0;
-    printBoard(board);
 }
 
 void solve(){
@@ -266,12 +264,16 @@ void solve(){
         cin>>k;
         if(k==0){
             int startTime = clock();
+
+            // Multithreading Enabled Function
             makeMove(board, turn, 10);
 
+            // Disabled Multithreading, simple defined depth search code
             // auto result = minimax(board,depth,turn,-10000,10000);
             // printInfo(result, startTime);
             // board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
             // board[result[0].first][result[0].second]=0;
+
             printBoard(board);
         }
         else if(k==2){
@@ -282,6 +284,8 @@ void solve(){
             string moveMade;
             cin>>moveMade;
             assignNums(moveMade,l1,r1,l2,r2);
+
+            cout<<endl<<"User Moved: "<<moveMade<<endl;
             board[l2][r2]=board[l1][r1];
             board[l1][r1]=0;
             printBoard(board);

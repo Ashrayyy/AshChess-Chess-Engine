@@ -113,6 +113,6 @@ void printInfo(vector<pair<int,int>> &result, int startTime){
     char r2=result[1].second+'a';
     int l2=8-result[1].first;
     cout<<r1<<l1<<r2<<l2<<endl;
-    cout<<result[2].first<<endl;
+    cout<<"Board Evaluated as "<<result[2].first<<endl;
     cout<<"Runtime: "<<clock()-startTime<<endl<<endl;;
 }
