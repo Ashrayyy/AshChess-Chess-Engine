@@ -1,4 +1,13 @@
-# AshChess Chess Engine
+<div align="center">
+  <img src="https://github.com/Ashrayyy/AshChess-Chess-Engine/assets/101005702/bd918025-a04a-4ee1-850c-dfdcdb368c6d"/>
+
+  <h1>AshChess Chess Engine</h3>
+
+  A fun Chess Engine Written in C++.
+  <br>
+  <br>
+
+</div>
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -12,7 +21,7 @@ This is a relatively simple chess engine implemented in [C++]. It allows you to 
 - Set timely moves, I.e., enter a time 'x' seconds, and the best move that could be made in x seconds would be made by the Engine
 - Game analysis
 - Simple function calls, that can be implemented in APIs.
-- Multi-Threading Enabled.
+- Uses Multi-Threading Features in C++.
 
 ## Installation
 
@@ -40,7 +49,7 @@ enter 2 for skipping a turn (for development and debugging purposes (and for spe
 
 This Chess engine was a fun project, I love chess and I wanted to make some project related to the game. 
 
-The input move format is inspired from TSCP (Tom Kerrigan's Simple Chess Program) [http://www.tckerrigan.com/Chess/TSCP/].
+The input move format is Universal Chess Interface (UCI) [https://en.wikipedia.org/wiki/Universal_Chess_Interface]
 
 ## References
 
