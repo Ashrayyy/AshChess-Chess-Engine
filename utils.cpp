@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include "movegen.h"
 using namespace std;
 #define pb push_back
 unordered_map<int,char> peice; // score,peice
@@ -22,8 +23,26 @@ void utilsInit(){
 
 int evalBoard(vector<vector<int>> &board){
     int sum=0;
-    for(auto row : board){
-        for(auto col:row)sum+=col;
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            sum+=board[i][j];
+
+            //knights in the mid heuristic
+            if(abs(board[i][j])==30 && i>1 && i<6 && j>1 && j<6)sum+=board[i][j]/30;
+
+            //pawns ahead heuristic
+            if(board[i][j]==10 && i<=4)sum+=4-i;
+            if(board[i][j]==-10 && i>=5)sum-=i-5;
+
+            //king in side heuristic
+            if(board[i][j]==1000)sum-=min(abs(j-2),abs(j-6));
+            if(board[i][j]==-1000)sum+=min(abs(j-2),abs(j-6));
+
+            //rook at sevent rank heuristic
+
+            if(board[i][j]==50 && i==1)sum++; 
+            if(board[i][j]==-50 && i==6)sum--; 
+        }
     }
     return sum;
 }
@@ -41,21 +60,44 @@ int evalBoard(vector<vector<int>> &board){
 
 vector<vector<int>> customPosition(){
     vector<vector<int>> board;
-    vector<int> row ={-50,-30,-31,-90,-1000,-31,0,-50};
+    vector<int> row;
+    row ={-50,      0,      0,      0,      -1000,  0,    0,      -50};
     board.pb(row);
-    row ={-10,-10,-10,-10,0,-10,-10,-10};
+    row ={0,      -31,    0,    0,    -90,      0,    -10,    0};
     board.pb(row);
-    row ={0,0,0,0,0,-30,0,0};
+    row ={-10,      0  ,      -30,      0,      0,      0,    0,      -10};
     board.pb(row);
-    row ={0,0,0,0,-10,0,0,0};
+    row ={0,        -10,      0,      0,      0,    0,      30,      0};
     board.pb(row);
-    row ={90,0,0,0,0,0,0,0};
+    row ={0,       0,      0,      0,      0,      31,      0,      90};
     board.pb(row);
-    row ={0,0,10,0,0,0,0,0};
+    row ={0,        0,      0,     0,      -10,      0,      10,      0};
     board.pb(row);
-    row ={10,10,0,10,10,10,10,10};
+    row ={10,       10,     10,      0,     0,     -31,     0,     10};
     board.pb(row);
-    row ={50,30,31,0,1000,31,30,50};
+    row ={0,       0,     1000,      50,   0,       50,     0,     0};
+    board.pb(row);
+    return board;   
+}
+
+vector<vector<int>> customPosition2(){
+    vector<vector<int>> board;
+    vector<int> row;
+    row ={0,        0,          0,          0,          0,      0,      -1000,      0};
+    board.pb(row);
+    row ={0,        50,         0,          0,          0,      0,    -10,        -10};
+    board.pb(row);
+    row ={ 0,      0  ,       0,      -31,      0,      -10,    0,      0};
+    board.pb(row);
+    row ={-10,        0,      0,      0,      0,    0,      0,      0};
+    board.pb(row);
+    row ={0,       0,      0,      0,      0,      0,      0,      0};
+    board.pb(row);
+    row ={0,        0,      0,     0,      0,      0,      0,      10};
+    board.pb(row);
+    row ={0,       0,     0,      0,     -30,     0,     10,     0};
+    board.pb(row);
+    row ={0,       0,     0,      0,   0,       50,     0,     1000};
     board.pb(row);
     return board;   
 }
@@ -93,8 +135,12 @@ void printBoard(vector<vector<int>> &board){
     }
     if(peice.size()==0)utilsInit();
     cout<<endl;
+    cout<<"\t  ";
+    for(int i=0;i<8;i++)cout<<i<<" ";
+    cout<<endl;
+    int ct=0;
     for(auto row : board){
-        cout<<"\t";
+        cout<<"\t"<<ct++<<" ";
         for(auto col:row)cout<<peice[col]<<" ";
         cout<<endl;
     }
@@ -103,6 +149,11 @@ void printBoard(vector<vector<int>> &board){
 
 void printInfo(vector<pair<int,int>> &result, int startTime){
     cout<<"{"<<result[0].first<<","<<result[0].second<<"}"<<" -> "<<"{"<<result[1].first<<","<<result[1].second<<"}"<<endl;
-    cout<<result[2].first<<endl;
-    cout<<"Runtime: "<<clock()-startTime<<endl;
+    char r1=result[0].second+'a';
+    int l1=8-result[0].first;
+    char r2=result[1].second+'a';
+    int l2=8-result[1].first;
+    cout<<r1<<l1<<r2<<l2<<endl;
+    cout<<"Board Evaluated as "<<result[2].first<<endl;
+    cout<<"Runtime: "<<clock()-startTime<<endl<<endl;;
 }

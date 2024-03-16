@@ -24,6 +24,20 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "chrono": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "ostream": "cpp",
+        "complex": "cpp",
+        "valarray": "cpp",
+        "xlocale": "cpp",
+        "thread": "cpp",
+        "future": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "regex": "cpp",
+        "xhash": "cpp",
+        "xtree": "cpp"
     }
 }
