@@ -4,23 +4,25 @@
 
 ## Description
 
-This is a relatively simple chess engine implemented in [C++]. It allows you to play chess against the engine, analyze games, and integrate it into other applications.
+This is a relatively simple chess engine implemented in [C++]. It allows you to play chess against the engine, analyze games, and play the best move in puzzles (custom positions).
 
 ## Features
 
 - Play against the engine
-- Set timely moves, I.e., enter a time 'x' seconds, and the best move that could be made in x seconds would be made by the code
+- Set timely moves, I.e., enter a time 'x' seconds, and the best move that could be made in x seconds would be made by the Engine
 - Game analysis
 - Simple function calls, that can be implemented in APIs.
-- Multi-Threading Enabled
+- Multi-Threading Enabled.
 
 ## Installation
 
 Step 1: Clone this Repository
+
 ```
 git clone https://github.com/Ashrayyy/AshChess-Chess-Engine.git
 ```
-That's it, then compile the project.
+
+That's it, compile the project.
 
 ##### Note: The w64 MinGW Compiler will not be able to compile the project, you need to add future and threading libraries manually (or install a posix build of MinGW with multithreading support)
 
@@ -36,10 +38,17 @@ enter 2 for skipping a turn (for development and debugging purposes (and for spe
 
 ## Credits
 
-This Chess engine was a fun project, I love chess and I wanted to make some project realted to the game.
+This Chess engine was a fun project, I love chess and I wanted to make some project related to the game. 
 
-The input move format is inspired from TSCP (Tom Kerrigan's Simple Chess Program) [http://www.tckerrigan.com/Chess/TSCP/] 
-and a lot of openings placed in the openings file is his work.
+The input move format is inspired from TSCP (Tom Kerrigan's Simple Chess Program) [http://www.tckerrigan.com/Chess/TSCP/].
+
+## References
+
+This Engine DOES NOT USE BITMAPS to represent the chessboard. It uses a 2d vector to display the ChessBoard and evaluated positions on the basis of basic and advanced heuristics. Although, I do not utilize the given references, but these sure got me a better understanding to complete the project.
+
+- ChessProgrammingWiki [https://www.chessprogramming.org/Main_Page]
+- TSCP (Tom Kerrigan's Simple Chess Program) [http://www.tckerrigan.com/Chess/TSCP/]
+
 
 ## Contact
 
