@@ -43,7 +43,7 @@ You can set time per move, or set the position in the code.
 An infinite loops run that always waits for inputs
 enter 0 for the engine to make the move
 enter 1 for making a manual move.
-enter 2 for skipping a turn (for development and debugging purposes (and for special moves like castling/promotion/en-passant))
+enter 2 for skipping a turn (for development and debugging purposes (and for special moves like en-passant))
 
 ## Credits
 
@@ -53,7 +53,7 @@ The input move format is Universal Chess Interface (UCI) [https://en.wikipedia.o
 
 ## References
 
-This Engine DOES NOT USE BITMAPS to represent the chessboard. It uses a 2d vector to display the ChessBoard and evaluated positions on the basis of basic and advanced heuristics. Although, I do not utilize the given references, but these sure got me a better understanding to complete the project.
+This Engine DOES NOT USE BITMAPS to represent the chessboard. It uses a 2d vector to display the ChessBoard and evaluated positions on the basis of basic and advanced heuristics. These refereces sure got me a better understanding to complete the project.
 
 - ChessProgrammingWiki [https://www.chessprogramming.org/Main_Page]
 - TSCP (Tom Kerrigan's Simple Chess Program) [http://www.tckerrigan.com/Chess/TSCP/]
