@@ -80,6 +80,28 @@ vector<vector<int>> customPosition(){
     return board;   
 }
 
+vector<vector<int>> customPosition2(){
+    vector<vector<int>> board;
+    vector<int> row;
+    row ={0,        0,          0,          0,          0,      0,      -1000,      0};
+    board.pb(row);
+    row ={0,        50,         0,          0,          0,      0,    -10,        -10};
+    board.pb(row);
+    row ={ 0,      0  ,       0,      -31,      0,      -10,    0,      0};
+    board.pb(row);
+    row ={-10,        0,      0,      0,      0,    0,      0,      0};
+    board.pb(row);
+    row ={0,       0,      0,      0,      0,      0,      0,      0};
+    board.pb(row);
+    row ={0,        0,      0,     0,      0,      0,      0,      10};
+    board.pb(row);
+    row ={0,       0,     0,      0,     -30,     0,     10,     0};
+    board.pb(row);
+    row ={0,       0,     0,      0,   0,       50,     0,     1000};
+    board.pb(row);
+    return board;   
+}
+
 vector<vector<int>> initialPosition(){
     vector<vector<int>> board;
     vector<int> row ={-50,-30,-31,-90,-1000,-31,-30,-50};
