@@ -187,7 +187,7 @@ vector<vector<pair<int,int>>> allPosibleMoves(int color, vector<vector<int>> boa
         auto pPosb=b[0],nPosb=b[1];
         int diff1 = (abs(board[nPosa.first][nPosa.second])==0 ? 0 : (abs(board[nPosa.first][nPosa.second])-abs(board[pPosa.first][pPosa.second])));
         int diff2 = (abs(board[nPosb.first][nPosb.second])==0 ? 0 : (abs(board[nPosb.first][nPosb.second])-abs(board[pPosb.first][pPosb.second])));
-        return diff1>diff2;
+        // return diff1>diff2;
         return (abs(board[nPosa.first][nPosa.second])-abs(board[pPosa.first][pPosa.second]))>(abs(board[nPosb.first][nPosb.second])-abs(board[pPosb.first][pPosb.second]));
     });
     return moves;

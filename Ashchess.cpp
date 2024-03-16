@@ -536,8 +536,8 @@ void solve(){
 
 int main(){
     srand(time(NULL));
-    solve();
-    // debugBoard();
+    // solve();
+    debugBoard();
     // auto board = customPosition();
     // auto result = minimax(board,7,1,-10000,10000,3,3);
     // printBoard(board);
