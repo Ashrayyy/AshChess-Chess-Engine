@@ -58,6 +58,17 @@ This Engine DOES NOT USE BITMAPS to represent the chessboard. It uses a 2d vecto
 - ChessProgrammingWiki [https://www.chessprogramming.org/Main_Page]
 - TSCP (Tom Kerrigan's Simple Chess Program) [http://www.tckerrigan.com/Chess/TSCP/]
 
+## Games
+
+
+
+<p align="center">
+  I am a 1700+ on Chess com and this was one of the few games I won, after sacrificing a Rook and then a Bishop. This game was played at an early stage while developing the bot, when it didn't even had complex moves like castling and pawn promotions introduced.
+  <br>
+  <img width="460" height="300" src="https://github.com/Ashrayyy/AshChess-Chess-Engine/assets/101005702/c1e5dbac-4282-4b96-b5d0-71ba3f48292c">
+  <br>
+</p>
+
 
 ## Contact
 
