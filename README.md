@@ -72,5 +72,5 @@ This Engine DOES NOT USE BITMAPS to represent the chessboard. It uses a 2d vecto
 
 ## Contact
 
-In case you want to contribute to the project, or if you have any queries, you can reach me at [ashrayy.tiwari@gmail.com] or dm me at my LinkedIn[https://www.linkedin.com/in/ashrayy/] !
+In case you want to contribute to the project, or if you have any queries, you can [Email me](mailto:ashrayy.tiwari@gmail.com) or dm me at my [LinkedIn](https://www.linkedin.com/in/ashrayy/) !
 
