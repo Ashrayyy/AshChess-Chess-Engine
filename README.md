@@ -51,6 +51,9 @@ This Chess engine was a fun project, I love chess and I wanted to make some proj
 
 The input move format is Universal Chess Interface (UCI) [https://en.wikipedia.org/wiki/Universal_Chess_Interface]
 
+The Opening file contains openings picked from [Chess-poster's Website](https://www.chess-poster.com/english/openings/chess_openings.htm) and also from Tom Kerrigan's SCP. 
+Kudos to [LiChess](https://lichess.org/) for the great Master Database to pick and add selective Openings!
+
 ## References
 
 This Engine DOES NOT USE BITMAPS to represent the chessboard. It uses a 2d vector to display the ChessBoard and evaluated positions on the basis of basic and advanced heuristics. These refereces sure got me a better understanding to complete the project.
