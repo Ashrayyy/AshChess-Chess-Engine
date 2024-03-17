@@ -43,15 +43,15 @@ int evalBoard(vector<vector<int>> &board){
             if(board[i][j]==-50 && i==6)sum--; 
 
             //king covered heuristic
-            // if(abs(board[i][j])==1000){
-            //     for(int x=-2;x<=2;x++){
-            //         for(int y=-2;y<=2;y++){
-            //             if(isInvalid(i+x,i+j))continue;
-            //             if(isSame(1,board[i+x][j+y]))sum+=(3-max(x,y));
-            //             if(isSame(-1,board[i+x][j+y]))sum+=(max(x,y)-3);
-            //         }
-            //     }
-            // }
+            if(abs(board[i][j])==1000){
+                for(int x=-2;x<=2;x++){
+                    for(int y=-2;y<=2;y++){
+                        if(isInvalid(i+x,i+j))continue;
+                        if(isSame(1,board[i+x][j+y]))sum+=(3-max(abs(x),abs(y)));
+                        if(isSame(-1,board[i+x][j+y]))sum+=(max(abs(x),abs(y))-3);
+                    }
+                }
+            }
         }
     }
     return sum;
