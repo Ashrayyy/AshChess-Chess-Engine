@@ -525,9 +525,28 @@ void solve(){
             assignNums(moveMade,l1,r1,l2,r2);
 
             cout<<endl<<"User Moved: "<<moveMade<<endl;
-            board[l2][r2]=board[l1][r1];
-            board[l1][r1]=0;
+            if(moveMade == "e1g1"){
+                swap(board[7][4],board[7][6]);
+                swap(board[7][7],board[7][5]);
+            }
+            else if(moveMade == "e1c1"){
+                swap(board[7][4],board[7][2]);
+                swap(board[7][0],board[7][3]);
+            }
+            else if(moveMade == "e8g8"){
+                swap(board[0][4],board[0][6]);
+                swap(board[0][7],board[0][5]);
+            }
+            else if(moveMade == "e8c8"){
+                swap(board[0][4],board[0][2]);
+                swap(board[0][0],board[0][3]);
+            }
+            else{
+                board[l2][r2]=board[l1][r1];
+                board[l1][r1]=0;
+            }
             printBoard(board);
+            cout<<"Board Evaluated as: "<<evalBoard(board)<<endl<<endl;;
         }
         turn *= -1;
     }
@@ -536,8 +555,8 @@ void solve(){
 
 int main(){
     srand(time(NULL));
-    // solve();
-    debugBoard();
+    solve();
+    // debugBoard();
     // auto board = customPosition();
     // auto result = minimax(board,7,1,-10000,10000,3,3);
     // printBoard(board);
