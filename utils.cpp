@@ -39,9 +39,19 @@ int evalBoard(vector<vector<int>> &board){
             if(board[i][j]==-1000)sum+=min(abs(j-2),abs(j-6));
 
             //rook at sevent rank heuristic
-
             if(board[i][j]==50 && i==1)sum++; 
             if(board[i][j]==-50 && i==6)sum--; 
+
+            //king covered heuristic
+            // if(abs(board[i][j])==1000){
+            //     for(int x=-2;x<=2;x++){
+            //         for(int y=-2;y<=2;y++){
+            //             if(isInvalid(i+x,i+j))continue;
+            //             if(isSame(1,board[i+x][j+y]))sum+=(3-max(x,y));
+            //             if(isSame(-1,board[i+x][j+y]))sum+=(max(x,y)-3);
+            //         }
+            //     }
+            // }
         }
     }
     return sum;
@@ -76,6 +86,28 @@ vector<vector<int>> customPosition(){
     row ={10,       10,     10,      0,     0,     -31,     0,     10};
     board.pb(row);
     row ={0,       0,     1000,      50,   0,       50,     0,     0};
+    board.pb(row);
+    return board;   
+}
+
+vector<vector<int>> customPosition2(){
+    vector<vector<int>> board;
+    vector<int> row;
+    row ={0,        0,          0,          0,          0,      0,      -1000,      0};
+    board.pb(row);
+    row ={0,        50,         0,          0,          0,      0,    -10,        -10};
+    board.pb(row);
+    row ={ 0,      0  ,       0,      -31,      0,      -10,    0,      0};
+    board.pb(row);
+    row ={-10,        0,      0,      0,      0,    0,      0,      0};
+    board.pb(row);
+    row ={0,       0,      0,      0,      0,      0,      0,      0};
+    board.pb(row);
+    row ={0,        0,      0,     0,      0,      0,      0,      10};
+    board.pb(row);
+    row ={0,       0,     0,      0,     -30,     0,     10,     0};
+    board.pb(row);
+    row ={0,       0,     0,      0,   0,       50,     0,     1000};
     board.pb(row);
     return board;   
 }

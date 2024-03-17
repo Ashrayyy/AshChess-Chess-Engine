@@ -50,6 +50,58 @@ vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player,
     auto bestMove = moves[clock()%moves.size()];
     if(player>0){
         int maxEval=-10000;
+        for(int col=0;col<8;col++){
+            if(board[1][col]==10 && board[0][col]==0){
+                board[0][col]=90;
+                board[1][col]=0;
+                auto result = minimax(board,depth-1,-1,alpha,beta,csw,csb);
+                board[0][col]=0;
+                board[1][col]=10;
+                auto move = vector<pair<int,int>> (0);
+                move.pb({1,col});
+                move.pb({0,col});
+                if(result[2].first > maxEval){
+                    maxEval = result[2].first;
+                    bestMove = move;
+                    bestMove.pb(result[2]);
+                }
+                alpha=max(alpha,result[2].first);
+            }
+            if(board[1][col]==10 && col>0 && board[0][col-1]<0){
+                int prevVal=board[0][col-1];
+                board[1][col]=0;
+                board[0][col-1]=90;
+                auto result = minimax(board,depth-1,-1,alpha,beta,csw,csb);
+                board[1][col]=10;
+                board[0][col-1]=prevVal;
+                auto move = vector<pair<int,int>> (0);
+                move.pb({1,col});
+                move.pb({0,col-1});
+                if(result[2].first > maxEval){
+                    maxEval = result[2].first;
+                    bestMove = move;
+                    bestMove.pb(result[2]);
+                }
+                alpha=max(alpha,result[2].first);
+            }
+            if(board[1][col]==10 && col<7 && board[0][col+1]<0){
+                int prevVal=board[0][col+1];
+                board[1][col]=0;
+                board[0][col+1]=90;
+                auto result = minimax(board,depth-1,-1,alpha,beta,csw,csb);
+                board[1][col]=10;
+                board[0][col+1]=prevVal;
+                auto move = vector<pair<int,int>> (0);
+                move.pb({1,col});
+                move.pb({0,col+1});
+                if(result[2].first > maxEval){
+                    maxEval = result[2].first;
+                    bestMove = move;
+                    bestMove.pb(result[2]);
+                }
+                alpha=max(alpha,result[2].first);
+            }
+        }
         if(csw>=2){
             if(board[7][1]==0 && board[7][2]==0 && board[7][3]==0  && !checkIfUnderAttack({7,3},board,1) && !checkIfUnderAttack({7,2},board,1) && !checkIfUnderAttack({7,4},board,1)){
                 //O-O-O
@@ -120,6 +172,58 @@ vector<pair<int,int>> minimax(vector<vector<int>> &board, int depth, int player,
     }
     else{
         int minEval=10000;
+        for(int col=0;col<8;col++){
+            if(board[6][col]==-10 && board[7][col]==0){
+                board[6][col]=0;
+                board[7][col]=-90;
+                auto result = minimax(board,depth-1,-1,alpha,beta,csw,csb);
+                board[6][col]=-10;
+                board[7][col]=0;
+                auto move = vector<pair<int,int>> (0);
+                move.pb({6,col});
+                move.pb({7,col});
+                if(result[2].first < minEval){
+                    minEval = result[2].first;
+                    bestMove = move;
+                    bestMove.pb(result[2]);
+                }
+                beta=min(beta,result[2].first);
+            }
+            if(board[6][col]==-10 && col>0 && board[7][col-1]>0){
+                int prevVal = board[7][col-1];
+                board[6][col]=0;
+                board[7][col-1]=-90;
+                auto result = minimax(board,depth-1,-1,alpha,beta,csw,csb);
+                board[6][col]=-10;
+                board[7][col-1]=prevVal;
+                auto move = vector<pair<int,int>> (0);
+                move.pb({6,col});
+                move.pb({7,col-1});
+                if(result[2].first < minEval){
+                    minEval = result[2].first;
+                    bestMove = move;
+                    bestMove.pb(result[2]);
+                }
+                beta=min(beta,result[2].first);
+            }
+            if(board[6][col]==-10 && col<7 && board[7][col+1]>0){
+                int prevVal = board[7][col+1];
+                board[6][col]=0;
+                board[7][col+1]=-90;
+                auto result = minimax(board,depth-1,-1,alpha,beta,csw,csb);
+                board[6][col]=-10;
+                board[7][col+1]=prevVal;
+                auto move = vector<pair<int,int>> (0);
+                move.pb({6,col});
+                move.pb({7,col+1});
+                if(result[2].first < minEval){
+                    minEval = result[2].first;
+                    bestMove = move;
+                    bestMove.pb(result[2]);
+                }
+                beta=min(beta,result[2].first);
+            }
+        }
         if(csb>=2){
             if(board[0][1]==0 && board[0][2]==0 && board[0][3]==0  && !checkIfUnderAttack({0,3},board,-1) && !checkIfUnderAttack({0,2},board,-1) && !checkIfUnderAttack({0,4},board,-1)){
                 //O-O-O
@@ -279,6 +383,11 @@ void debugBoard(){
         board[result[0].first][result[0].second]=0;
     }
 
+    for(int col=0;col<8;col++){
+        if(board[0][col]==10)board[0][col]=90;
+        if(board[7][col]==-10)board[7][col]=-90;
+    }
+
     if(board[7][4] != 1000) cswDebug&=0;
     if(board[0][4] != -1000) csbDebug&=0;
     if(board[7][7] != 50)cswDebug&=2;
@@ -369,6 +478,11 @@ void makeMove(vector<vector<int>> &board, int player, int time, int &csw, int &c
         board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
         board[result[0].first][result[0].second]=0;
     }
+    
+    for(int col=0;col<8;col++){
+        if(board[0][col]==10)board[0][col]=90;
+        if(board[7][col]==-10)board[7][col]=-90;
+    }
 
     if(board[7][4] != 1000) csw&=0;
     if(board[0][4] != -1000) csb&=0;
@@ -411,9 +525,28 @@ void solve(){
             assignNums(moveMade,l1,r1,l2,r2);
 
             cout<<endl<<"User Moved: "<<moveMade<<endl;
-            board[l2][r2]=board[l1][r1];
-            board[l1][r1]=0;
+            if(moveMade == "e1g1"){
+                swap(board[7][4],board[7][6]);
+                swap(board[7][7],board[7][5]);
+            }
+            else if(moveMade == "e1c1"){
+                swap(board[7][4],board[7][2]);
+                swap(board[7][0],board[7][3]);
+            }
+            else if(moveMade == "e8g8"){
+                swap(board[0][4],board[0][6]);
+                swap(board[0][7],board[0][5]);
+            }
+            else if(moveMade == "e8c8"){
+                swap(board[0][4],board[0][2]);
+                swap(board[0][0],board[0][3]);
+            }
+            else{
+                board[l2][r2]=board[l1][r1];
+                board[l1][r1]=0;
+            }
             printBoard(board);
+            cout<<"Board Evaluated as: "<<evalBoard(board)<<endl<<endl;;
         }
         turn *= -1;
     }
@@ -425,6 +558,8 @@ int main(){
     solve();
     // debugBoard();
     // auto board = customPosition();
-    // auto result = minimax(board,1,-1,-10000,10000,3,3);
+    // auto result = minimax(board,7,1,-10000,10000,3,3);
+    // printBoard(board);
+    // printInfo(result,0);
     return 0;
 }
