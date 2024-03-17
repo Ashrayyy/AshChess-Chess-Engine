@@ -11,27 +11,79 @@
 
 
 Opening Continued
+Move made: c2c4
 
 	  0 1 2 3 4 5 6 7 
 	0 r n b q k b n r 
 	1 p p p p p p p p 
 	2 . . . . . . . . 
 	3 . . . . . . . . 
-	4 . . . . . . . . 
-	5 . . . . P . . . 
-	6 P P P P . P P P 
+	4 . . P . . . . . 
+	5 . . . . . . . . 
+	6 P P . P P P P P 
 	7 R N B Q K B N R 
 
 
 Opening Continued
+Move made: g7g6
 
 	  0 1 2 3 4 5 6 7 
 	0 r n b q k b n r 
-	1 p p p p . p p p 
-	2 . . . . . . . . 
-	3 . . . . p . . . 
-	4 . . . . . . . . 
-	5 . . . . P . . . 
-	6 P P P P . P P P 
+	1 p p p p p p . p 
+	2 . . . . . . p . 
+	3 . . . . . . . . 
+	4 . . P . . . . . 
+	5 . . . . . . . . 
+	6 P P . P P P P P 
+	7 R N B Q K B N R 
+
+
+Opening Continued
+Move made: e2e4
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b q k b n r 
+	1 p p p p p p . p 
+	2 . . . . . . p . 
+	3 . . . . . . . . 
+	4 . . P . P . . . 
+	5 . . . . . . . . 
+	6 P P . P . P P P 
+	7 R N B Q K B N R 
+
+
+Result calculated up till 5 depth, and is
+{0,1} -> {2,2}
+b8c6
+Board Evaluated as -27
+Runtime: 23018
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r . b q k b n r 
+	1 p p p p p p . p 
+	2 . . n . . . p . 
+	3 . . . . . . . . 
+	4 . . P . P . . . 
+	5 . . . . . . . . 
+	6 P P . P . P P P 
+	7 R N B Q K B N R 
+
+
+Result calculated up till 5 depth, and is
+{4,2} -> {3,2}
+c4c5
+Board Evaluated as -5
+Runtime: 23064
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r . b q k b n r 
+	1 p p p p p p . p 
+	2 . . n . . . p . 
+	3 . . P . . . . . 
+	4 . . . . P . . . 
+	5 . . . . . . . . 
+	6 P P . P . P P P 
 	7 R N B Q K B N R 
 
