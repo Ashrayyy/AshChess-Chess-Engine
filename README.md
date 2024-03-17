@@ -72,6 +72,25 @@ This Engine DOES NOT USE BITMAPS to represent the chessboard. It uses a 2d vecto
   <br>
 </p>
 
+## How it works
+
+#### Openings
+When a game starts, the openings get loaded in a Trie Data Structure, I have also added the first 6 best moves from the Lichess Master Database into the openings. It randomly chooses the available options as per the previous moves.
+
+##### What if I want to add my own openings to the opening Trie
+It is simple, either just place UCI notations in the openings.txt file. Or if you have PGN, paste it into openingsGeneralNotations.txt and the run the pgn_to_uci.py script to get UCI notations in openingsUCInotation.txt, then you can copy and paste the UCI notations of openings into openings.txt!
+
+As the game proceeds, the opening Trie gets searched on, once the nextTrie vector is empty (on reaching a terminal node), the engine does start calculating.
+
+##### Calculating, how?
+
+The Engine utilizes recursion techniques and advanced versions of the MiniMax algorithm and several Pruning techniques including Alpha-Beta Pruning to reduce the branching factor and prune not-so-good branches. and evaluates terminal nodes.
+
+##### Evaluation, how?
+
+The engine evaluates chess board position on the basis of heuristics (since computers can not get intutions as humans do).
+
+I have tried to add comments at specific points to make the code more understandable, however for any doubts, you can reach out to me!
 
 ## Contact
 
