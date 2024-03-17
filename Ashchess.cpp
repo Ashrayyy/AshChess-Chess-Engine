@@ -7,6 +7,11 @@
 using namespace std;
 #define pb push_back
 
+class Trie{
+    public:
+    vector<pair<string,Trie>> nextTrie;
+};
+
 bool time_over;
 
 /*
@@ -493,6 +498,57 @@ void makeMove(vector<vector<int>> &board, int player, int time, int &csw, int &c
 }
 
 void solve(){
+    fstream new_file;
+    new_file.open("openingsUCInotation.txt", ios::in); 
+
+    Trie trie = Trie();
+    Trie *current_trie;
+    Trie openingTrie;
+
+    if (new_file.is_open()) { 
+        cout<<"Opening file found, loading Openings"<<endl;
+        string sa;
+        while (getline(new_file, sa)){
+            string move="";
+            current_trie = &trie;
+            for(auto k:sa){
+                if(k!=' '){
+                    move+=k;
+                }
+                if(move.size()==4){
+                    //process move
+                    // cout<<move<<" ";
+                    bool found =false;
+                    for(auto &k : current_trie->nextTrie){
+                        if(k.first==move){
+                            found = true;
+                            current_trie = &k.second;
+                            break;
+                        }
+                    }
+                    if(!found){
+                        Trie new_trie = Trie();
+                        current_trie->nextTrie.push_back({move,new_trie});
+                        current_trie = &new_trie;
+                    }
+                    move.clear();
+                }
+                else if(move.size()>0 && k==' '){
+                    cout<<"error"<<endl;
+                }
+                else{
+                    // eat 5 star, do nothing
+                }
+            }
+        }
+        new_file.close(); 
+        cout<<"Openings Loaded!"<<endl;
+    }
+    else{
+        cout<<"Openings not found!"<<endl;
+    }
+    openingTrie = trie;
+
     auto  board = initialPosition();
     printBoard(board);
     int depth = 6;
@@ -502,18 +558,55 @@ void solve(){
         int k;
         cin>>k;
         if(k==0){
-            int startTime = clock();
+            if(openingTrie.nextTrie.size()!=0){
+                int l1,r1,l2,r2;
+                string moveMade;
 
-            // Multithreading Enabled Function
-            makeMove(board, turn, 10, csw, csb);
+                int ind = rand()%(openingTrie.nextTrie.size());
+                moveMade = openingTrie.nextTrie[ind].first;
+                openingTrie = openingTrie.nextTrie[ind].second;
 
-            // Disabled Multithreading, simple defined depth search code
-            // auto result = minimax(board,depth,turn,-10000,10000,csw,csb);
-            // printInfo(result, startTime);
-            // board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
-            // board[result[0].first][result[0].second]=0;
+                assignNums(moveMade,l1,r1,l2,r2);
 
-            printBoard(board);
+                if(moveMade == "e1g1"){
+                    swap(board[7][4],board[7][6]);
+                    swap(board[7][7],board[7][5]);
+                }
+                else if(moveMade == "e1c1"){
+                    swap(board[7][4],board[7][2]);
+                    swap(board[7][0],board[7][3]);
+                }
+                else if(moveMade == "e8g8"){
+                    swap(board[0][4],board[0][6]);
+                    swap(board[0][7],board[0][5]);
+                }
+                else if(moveMade == "e8c8"){
+                    swap(board[0][4],board[0][2]);
+                    swap(board[0][0],board[0][3]);
+                }
+                else{
+                    board[l2][r2]=board[l1][r1];
+                    board[l1][r1]=0;
+                }
+
+                cout<<endl<<"Opening Continued\nMove made: "<<moveMade<<endl;;
+                printBoard(board);
+
+            }
+            else{
+                int startTime = clock();
+
+                // Multithreading Enabled Function
+                makeMove(board, turn, 22, csw, csb);
+
+                // Disabled Multithreading, simple defined depth search code
+                // auto result = minimax(board,depth,turn,-10000,10000,csw,csb);
+                // printInfo(result, startTime);
+                // board[result[1].first][result[1].second]=board[result[0].first][result[0].second];
+                // board[result[0].first][result[0].second]=0;
+
+                printBoard(board);
+            }
         }
         else if(k==2){
             // skip turn 
@@ -522,6 +615,20 @@ void solve(){
             int l1,r1,l2,r2;
             string moveMade;
             cin>>moveMade;
+            
+            bool found = false;
+            for(auto &k: openingTrie.nextTrie){
+                if(k.first == moveMade){
+                    found =true;
+                    openingTrie = k.second;
+                    break;
+                }
+            }
+            if(!found){
+                Trie new_trie = Trie();
+                openingTrie = new_trie;
+            }
+
             assignNums(moveMade,l1,r1,l2,r2);
 
             cout<<endl<<"User Moved: "<<moveMade<<endl;

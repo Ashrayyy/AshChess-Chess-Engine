@@ -10,12 +10,7 @@
 	7 R N B Q K B N R 
 
 
-Result calculated up till 4 depth, and is
-{7,1} -> {5,2}
-b1c3
-Board Evaluated as 0
-Runtime: 11030
-
+Opening Continued
 
 	  0 1 2 3 4 5 6 7 
 	0 r n b q k b n r 
@@ -23,61 +18,20 @@ Runtime: 11030
 	2 . . . . . . . . 
 	3 . . . . . . . . 
 	4 . . . . . . . . 
-	5 . . N . . . . . 
-	6 P P P P P P P P 
-	7 R . B Q K B N R 
+	5 . . . . P . . . 
+	6 P P P P . P P P 
+	7 R N B Q K B N R 
 
 
-Result calculated up till 5 depth, and is
-{1,4} -> {2,4}
-e7e6
-Board Evaluated as -9
-Runtime: 11001
-
+Opening Continued
 
 	  0 1 2 3 4 5 6 7 
 	0 r n b q k b n r 
 	1 p p p p . p p p 
-	2 . . . . p . . . 
-	3 . . . . . . . . 
+	2 . . . . . . . . 
+	3 . . . . p . . . 
 	4 . . . . . . . . 
-	5 . . N . . . . . 
-	6 P P P P P P P P 
-	7 R . B Q K B N R 
-
-
-Result calculated up till 5 depth, and is
-{6,6} -> {5,6}
-g2g3
-Board Evaluated as 9
-Runtime: 11060
-
-
-	  0 1 2 3 4 5 6 7 
-	0 r n b q k b n r 
-	1 p p p p . p p p 
-	2 . . . . p . . . 
-	3 . . . . . . . . 
-	4 . . . . . . . . 
-	5 . . N . . . P . 
-	6 P P P P P P . P 
-	7 R . B Q K B N R 
-
-
-Result calculated up till 4 depth, and is
-{0,5} -> {4,1}
-f8b4
-Board Evaluated as 9
-Runtime: 11049
-
-
-	  0 1 2 3 4 5 6 7 
-	0 r n b q k . n r 
-	1 p p p p . p p p 
-	2 . . . . p . . . 
-	3 . . . . . . . . 
-	4 . b . . . . . . 
-	5 . . N . . . P . 
-	6 P P P P P P . P 
-	7 R . B Q K B N R 
+	5 . . . . P . . . 
+	6 P P P P . P P P 
+	7 R N B Q K B N R 
 

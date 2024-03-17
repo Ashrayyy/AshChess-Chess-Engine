@@ -38,6 +38,9 @@
         "list": "cpp",
         "regex": "cpp",
         "xhash": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "iostream": "cpp",
+        "string": "cpp",
+        "fstream": "cpp"
     }
 }
