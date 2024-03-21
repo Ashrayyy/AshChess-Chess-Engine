@@ -10,80 +10,641 @@
 	7 R N B Q K B N R 
 
 
-Opening Continued
-Move made: c2c4
+User Moved: e2e4
 
 	  0 1 2 3 4 5 6 7 
 	0 r n b q k b n r 
 	1 p p p p p p p p 
 	2 . . . . . . . . 
 	3 . . . . . . . . 
-	4 . . P . . . . . 
+	4 . . . . P . . . 
 	5 . . . . . . . . 
-	6 P P . P P P P P 
+	6 P P P P . P P P 
 	7 R N B Q K B N R 
 
+Board Evaluated as: 0
 
-Opening Continued
-Move made: g7g6
+
+User Moved: c7c5
 
 	  0 1 2 3 4 5 6 7 
 	0 r n b q k b n r 
-	1 p p p p p p . p 
-	2 . . . . . . p . 
-	3 . . . . . . . . 
-	4 . . P . . . . . 
+	1 p p . p p p p p 
+	2 . . . . . . . . 
+	3 . . p . . . . . 
+	4 . . . . P . . . 
 	5 . . . . . . . . 
-	6 P P . P P P P P 
+	6 P P P P . P P P 
 	7 R N B Q K B N R 
 
+Board Evaluated as: 0
 
-Opening Continued
-Move made: e2e4
+
+User Moved: c2c3
 
 	  0 1 2 3 4 5 6 7 
 	0 r n b q k b n r 
-	1 p p p p p p . p 
-	2 . . . . . . p . 
-	3 . . . . . . . . 
-	4 . . P . P . . . 
-	5 . . . . . . . . 
+	1 p p . p p p p p 
+	2 . . . . . . . . 
+	3 . . p . . . . . 
+	4 . . . . P . . . 
+	5 . . P . . . . . 
 	6 P P . P . P P P 
 	7 R N B Q K B N R 
 
+Board Evaluated as: 0
+
+
+User Moved: g8f6
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b q k b . r 
+	1 p p . p p p p p 
+	2 . . . . . n . . 
+	3 . . p . . . . . 
+	4 . . . . P . . . 
+	5 . . P . . . . . 
+	6 P P . P . P P P 
+	7 R N B Q K B N R 
+
+Board Evaluated as: -1
+
+
+User Moved: e4e5
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b q k b . r 
+	1 p p . p p p p p 
+	2 . . . . . n . . 
+	3 . . p . P . . . 
+	4 . . . . . . . . 
+	5 . . P . . . . . 
+	6 P P . P . P P P 
+	7 R N B Q K B N R 
+
+Board Evaluated as: 0
+
+
+User Moved: f6d5
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b q k b . r 
+	1 p p . p p p p p 
+	2 . . . . . . . . 
+	3 . . p n P . . . 
+	4 . . . . . . . . 
+	5 . . P . . . . . 
+	6 P P . P . P P P 
+	7 R N B Q K B N R 
+
+Board Evaluated as: 0
+
+
+User Moved: d2d4
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b q k b . r 
+	1 p p . p p p p p 
+	2 . . . . . . . . 
+	3 . . p n P . . . 
+	4 . . . P . . . . 
+	5 . . P . . . . . 
+	6 P P . . . P P P 
+	7 R N B Q K B N R 
+
+Board Evaluated as: 0
+
+
+User Moved: c5d4
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b q k b . r 
+	1 p p . p p p p p 
+	2 . . . . . . . . 
+	3 . . . n P . . . 
+	4 . . . p . . . . 
+	5 . . P . . . . . 
+	6 P P . . . P P P 
+	7 R N B Q K B N R 
+
+Board Evaluated as: -10
+
+
+User Moved: c3d4
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b q k b . r 
+	1 p p . p p p p p 
+	2 . . . . . . . . 
+	3 . . . n P . . . 
+	4 . . . P . . . . 
+	5 . . . . . . . . 
+	6 P P . . . P P P 
+	7 R N B Q K B N R 
+
+Board Evaluated as: 0
+
+
+User Moved: d8c7
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b . r 
+	1 p p q p p p p p 
+	2 . . . . . . . . 
+	3 . . . n P . . . 
+	4 . . . P . . . . 
+	5 . . . . . . . . 
+	6 P P . . . P P P 
+	7 R N B Q K B N R 
+
+Board Evaluated as: 0
+
+
+User Moved: g1f3
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b . r 
+	1 p p q p p p p p 
+	2 . . . . . . . . 
+	3 . . . n P . . . 
+	4 . . . P . . . . 
+	5 . . . . . N . . 
+	6 P P . . . P P P 
+	7 R N B Q K B . R 
+
+Board Evaluated as: 1
+
+
+User Moved: d5b4
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b . r 
+	1 p p q p p p p p 
+	2 . . . . . . . . 
+	3 . . . . P . . . 
+	4 . n . P . . . . 
+	5 . . . . . N . . 
+	6 P P . . . P P P 
+	7 R N B Q K B . R 
+
+Board Evaluated as: 2
+
+
+User Moved: b1c3
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b . r 
+	1 p p q p p p p p 
+	2 . . . . . . . . 
+	3 . . . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . N . . 
+	6 P P . . . P P P 
+	7 R . B Q K B . R 
+
+Board Evaluated as: 3
+
+
+User Moved: b7b5
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b . r 
+	1 p . q p p p p p 
+	2 . . . . . . . . 
+	3 . p . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . N . . 
+	6 P P . . . P P P 
+	7 R . B Q K B . R 
+
+Board Evaluated as: 3
+
+
+User Moved: f1b5
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b . r 
+	1 p . q p p p p p 
+	2 . . . . . . . . 
+	3 . B . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . N . . 
+	6 P P . . . P P P 
+	7 R . B Q K . . R 
+
+Board Evaluated as: 13
+
 
 Result calculated up till 5 depth, and is
-{0,1} -> {2,2}
-b8c6
-Board Evaluated as -27
+{1,0} -> {2,0}
+a7a6
+Board Evaluated as -9
+Runtime: 23028
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b . r 
+	1 . . q p p p p p 
+	2 p . . . . . . . 
+	3 . B . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . N . . 
+	6 P P . . . P P P 
+	7 R . B Q K . . R 
+
+
+User Moved: b5e2
+
+	  0 1 2 3 4 5 6 7 
+	0 r n b . k b . r 
+	1 . . q p p p p p 
+	2 p . . . . . . . 
+	3 . . . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . N . . 
+	6 P P . . B P P P 
+	7 R . B Q K . . R 
+
+Board Evaluated as: 13
+
+
+Result calculated up till 5 depth, and is
+{0,2} -> {1,1}
+c8b7
+Board Evaluated as -15
+Runtime: 23030
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b . r 
+	1 . b q p p p p p 
+	2 p . . . . . . . 
+	3 . . . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . N . . 
+	6 P P . . B P P P 
+	7 R . B Q K . . R 
+
+
+User Moved: e1g1
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b . r 
+	1 . b q p p p p p 
+	2 p . . . . . . . 
+	3 . . . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . N . . 
+	6 P P . . B P P P 
+	7 R . B Q . R K . 
+
+Board Evaluated as: 15
+
+
+Result calculated up till 5 depth, and is
+{1,1} -> {5,5}
+b7f3
+Board Evaluated as -15
+Runtime: 23006
+
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b . r 
+	1 . . q p p p p p 
+	2 p . . . . . . . 
+	3 . . . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . b . . 
+	6 P P . . B P P P 
+	7 R . B Q . R K . 
+
+
+User Moved: e2f3
+
+	  0 1 2 3 4 5 6 7 
+	0 r n . . k b . r 
+	1 . . q p p p p p 
+	2 p . . . . . . . 
+	3 . . . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . B . . 
+	6 P P . . . P P P 
+	7 R . B Q . R K . 
+
+Board Evaluated as: 15
+
+
+Result calculated up till 5 depth, and is
+{0,0} -> {1,0}
+a8a7
+Board Evaluated as -5
+Runtime: 23022
+
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . . k b . r 
+	1 r . q p p p p p 
+	2 p . . . . . . . 
+	3 . . . . P . . . 
+	4 . n . P . . . . 
+	5 . . N . . B . . 
+	6 P P . . . P P P 
+	7 R . B Q . R K . 
+
+
+User Moved: a2a3
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . . k b . r 
+	1 r . q p p p p p 
+	2 p . . . . . . . 
+	3 . . . . P . . . 
+	4 . n . P . . . . 
+	5 P . N . . B . . 
+	6 . P . . . P P P 
+	7 R . B Q . R K . 
+
+Board Evaluated as: 15
+
+
+Result calculated up till 6 depth, and is
+{4,1} -> {2,2}
+b4c6
+Board Evaluated as 35
+Runtime: 23022
+
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . . k b . r 
+	1 r . q p p p p p 
+	2 p . n . . . . . 
+	3 . . . . P . . . 
+	4 . . . P . . . . 
+	5 P . N . . B . . 
+	6 . P . . . P P P 
+	7 R . B Q . R K . 
+
+
+User Moved: c1e3
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . . k b . r 
+	1 r . q p p p p p 
+	2 p . n . . . . . 
+	3 . . . . P . . . 
+	4 . . . P . . . . 
+	5 P . N . B B . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+Board Evaluated as: 14
+
+
+Result calculated up till 5 depth, and is
+{2,2} -> {0,3}
+c6d8
+Board Evaluated as 5
+Runtime: 23011
+
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . n k b . r 
+	1 r . q p p p p p 
+	2 p . . . . . . . 
+	3 . . . . P . . . 
+	4 . . . P . . . . 
+	5 P . N . B B . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+
+User Moved: d4d5
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . n k b . r 
+	1 r . q p p p p p 
+	2 p . . . . . . . 
+	3 . . . P P . . . 
+	4 . . . . . . . . 
+	5 P . N . B B . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+Board Evaluated as: 16
+
+
+Result calculated up till 6 depth, and is
+{1,0} -> {1,1}
+a7b7
+Board Evaluated as 54
+Runtime: 23017
+
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . n k b . r 
+	1 . r q p p p p p 
+	2 p . . . . . . . 
+	3 . . . P P . . . 
+	4 . . . . . . . . 
+	5 P . N . B B . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+
+User Moved: d5d6
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . n k b . r 
+	1 . r q p p p p p 
+	2 p . . P . . . . 
+	3 . . . . P . . . 
+	4 . . . . . . . . 
+	5 P . N . B B . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+Board Evaluated as: 17
+
+
+Result calculated up till 6 depth, and is
+{1,2} -> {0,2}
+c7c8
+Board Evaluated as 45
 Runtime: 23018
 
 
 	  0 1 2 3 4 5 6 7 
-	0 r . b q k b n r 
-	1 p p p p p p . p 
-	2 . . n . . . p . 
-	3 . . . . . . . . 
-	4 . . P . P . . . 
-	5 . . . . . . . . 
-	6 P P . P . P P P 
-	7 R N B Q K B N R 
+	0 . n q n k b . r 
+	1 . r . p p p p p 
+	2 p . . P . . . . 
+	3 . . . . P . . . 
+	4 . . . . . . . . 
+	5 P . N . B B . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
 
 
-Result calculated up till 5 depth, and is
-{4,2} -> {3,2}
-c4c5
-Board Evaluated as -5
-Runtime: 23064
+User Moved: f3b7
+
+	  0 1 2 3 4 5 6 7 
+	0 . n q n k b . r 
+	1 . B . p p p p p 
+	2 p . . P . . . . 
+	3 . . . . P . . . 
+	4 . . . . . . . . 
+	5 P . N . B . . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+Board Evaluated as: 67
+
+
+Result calculated up till 7 depth, and is
+{0,3} -> {1,1}
+d8b7
+Board Evaluated as 22
+Runtime: 23025
 
 
 	  0 1 2 3 4 5 6 7 
-	0 r . b q k b n r 
-	1 p p p p p p . p 
-	2 . . n . . . p . 
-	3 . . P . . . . . 
-	4 . . . . P . . . 
-	5 . . . . . . . . 
-	6 P P . P . P P P 
-	7 R N B Q K B N R 
+	0 . n q . k b . r 
+	1 . n . p p p p p 
+	2 p . . P . . . . 
+	3 . . . . P . . . 
+	4 . . . . . . . . 
+	5 P . N . B . . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+
+User Moved: e3b6
+
+	  0 1 2 3 4 5 6 7 
+	0 . n q . k b . r 
+	1 . n . p p p p p 
+	2 p B . P . . . . 
+	3 . . . . P . . . 
+	4 . . . . . . . . 
+	5 P . N . . . . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+Board Evaluated as: 36
+
+
+Result calculated up till 6 depth, and is
+{1,4} -> {2,3}
+e7d6
+Board Evaluated as 53
+Runtime: 23027
+
+
+	  0 1 2 3 4 5 6 7 
+	0 . n q . k b . r 
+	1 . n . p . p p p 
+	2 p B . p . . . . 
+	3 . . . . P . . . 
+	4 . . . . . . . . 
+	5 P . N . . . . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+
+User Moved: c3d5
+
+	  0 1 2 3 4 5 6 7 
+	0 . n q . k b . r 
+	1 . n . p . p p p 
+	2 p B . p . . . . 
+	3 . . . N P . . . 
+	4 . . . . . . . . 
+	5 P . . . . . . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+Board Evaluated as: 24
+
+
+Result calculated up till 5 depth, and is
+{0,2} -> {4,2}
+c8c4
+Board Evaluated as 3
+Runtime: 23022
+
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . . k b . r 
+	1 . n . p . p p p 
+	2 p B . p . . . . 
+	3 . . . N P . . . 
+	4 . . q . . . . . 
+	5 P . . . . . . . 
+	6 . P . . . P P P 
+	7 R . . Q . R K . 
+
+
+User Moved: a1c1
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . . k b . r 
+	1 . n . p . p p p 
+	2 p B . p . . . . 
+	3 . . . N P . . . 
+	4 . . q . . . . . 
+	5 P . . . . . . . 
+	6 . P . . . P P P 
+	7 . . R Q . R K . 
+
+Board Evaluated as: 24
+
+
+Result calculated up till 5 depth, and is
+{4,2} -> {4,4}
+c4e4
+Board Evaluated as 23
+Runtime: 23010
+
+
+	  0 1 2 3 4 5 6 7 
+	0 . n . . k b . r 
+	1 . n . p . p p p 
+	2 p B . p . . . . 
+	3 . . . N P . . . 
+	4 . . . . q . . . 
+	5 P . . . . . . . 
+	6 . P . . . P P P 
+	7 . . R Q . R K . 
+
+
+User Moved: c1c8
+
+	  0 1 2 3 4 5 6 7 
+	0 . n R . k b . r 
+	1 . n . p . p p p 
+	2 p B . p . . . . 
+	3 . . . N P . . . 
+	4 . . . . q . . . 
+	5 P . . . . . . . 
+	6 . P . . . P P P 
+	7 . . . Q . R K . 
+
+Board Evaluated as: 24
+
+
+Result calculated up till 6 depth, and is
+{4,4} -> {3,3}
+e4d5
+Board Evaluated as 991
+Runtime: 23008
+
+
+	  0 1 2 3 4 5 6 7 
+	0 . n R . k b . r 
+	1 . n . p . p p p 
+	2 p B . p . . . . 
+	3 . . . q P . . . 
+	4 . . . . . . . . 
+	5 P . . . . . . . 
+	6 . P . . . P P P 
+	7 . . . Q . R K . 
 

@@ -158,7 +158,7 @@ vector<pair<int,int>> possiblePawnMoves(pair<int,int> pos, vector<vector<int>> &
     return moves;
 }
 
-vector<vector<pair<int,int>>> allPosibleMoves(int color, vector<vector<int>> board){
+vector<vector<pair<int,int>>> allPosibleMoves(int color, vector<vector<int>> &board){
     // i will put color as 1 or -1
     vector<vector<pair<int,int>>> moves;
     for(int i=0;i<8;i++){
