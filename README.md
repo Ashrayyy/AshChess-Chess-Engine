@@ -11,6 +11,8 @@
 
 [![License](https://img.shields.io/badge/license-GPLv3-green.svg)](https://opensource.org/license/gpl-3-0)
 
+Note: This is a basic code that demonstrates the version of the engine, when their was need of constant debugging, the other version, being used as API is private as of now until fully developed.
+
 ## Description
 
 This is a relatively simple chess engine implemented in [C++]. It allows you to play chess against the engine, analyze games, and play the best move in puzzles (custom positions).
